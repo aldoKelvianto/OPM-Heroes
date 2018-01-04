@@ -10,34 +10,40 @@ import android.os.AsyncTask
  */
 class HeroViewModel(application: Application) : AndroidViewModel(application) {
 
-    val name: MutableLiveData<String> = MutableLiveData()
-    val photo: MutableLiveData<Int> = MutableLiveData()
-    val rank: MutableLiveData<Int> = MutableLiveData()
-    val isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val hero: MutableLiveData<Hero> = MutableLiveData()
+    var name: String? = "Saitama"
+    var photo: Int = R.mipmap.ic_launcher_round
+    var rank: String = "0"
+    var isLoading = false
 
-    interface Callback<T> {
+    interface Callback<in T> {
         fun onFinished(hero: T)
     }
 
     init {
-        isLoading.value = true
+        hero.observeForever({
+            it?.let { hero ->
+                bindData(hero)
+            }
+        })
+        isLoading = true
     }
 
     fun fetchDataForMePlease() {
-        isLoading.value = true
+        isLoading = true
 
         HeroViewModel.HeroFetcher(HeroDatabase, object : HeroViewModel.Callback<Hero> {
             override fun onFinished(hero: Hero) {
-                isLoading.value = false
-                bindData(hero)
+                isLoading = false
+                this@HeroViewModel.hero.value = hero
             }
         }).execute("Blast")
     }
 
-    fun bindData(hero: Hero) {
-        name.value = hero.name
-        photo.value = hero.photo
-        rank.value = hero.rank
+    private fun bindData(hero: Hero) {
+        name = hero.name
+        photo = hero.photo
+        rank = hero.rank.toString()
     }
 
     class HeroFetcher(private val heroDb: HeroDatabase, private val callback: Callback<Hero>) : AsyncTask<String, Int, Hero>() {

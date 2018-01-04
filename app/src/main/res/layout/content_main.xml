@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="heroViewModel"
+            type="com.aldoapps.opmsclass.HeroViewModel" />
+
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:visibility="gone"
+            app:isVisible="@{heroViewModel.isLoading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -25,6 +33,7 @@
             android:id="@+id/iv_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:loadImage="@{heroViewModel.photo}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher" />
@@ -33,6 +42,7 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{heroViewModel.name}"
             app:layout_constraintLeft_toRightOf="@id/iv_photo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Tatsumaki" />
@@ -41,6 +51,7 @@
             android:id="@+id/tv_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{heroViewModel.rank}"
             app:layout_constraintLeft_toRightOf="@id/iv_photo"
             app:layout_constraintTop_toBottomOf="@id/tv_name"
             tools:text="2" />

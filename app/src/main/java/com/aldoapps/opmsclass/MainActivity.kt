@@ -1,13 +1,11 @@
 package com.aldoapps.opmsclass
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         setSupportActionBar(binding?.toolbar)
 
         initViewModel()
@@ -27,33 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         heroViewModel = ViewModelProviders.of(this).get(HeroViewModel::class.java)
-        heroViewModel?.isLoading?.observe(this, Observer {
-            it?.let { isLoading ->
-                if (isLoading) {
-                    binding?.contentMain?.progressBar?.visibility = View.VISIBLE
-                } else {
-                    binding?.contentMain?.progressBar?.visibility = View.GONE
-                }
-            }
-        })
-
-        heroViewModel?.name?.observe(this, Observer {
-            it?.let { name ->
-                binding?.contentMain?.tvName?.text = name
-            }
-        })
-
-        heroViewModel?.photo?.observe(this, Observer {
-            it?.let { imageRes ->
-                binding?.contentMain?.ivPhoto?.setImageResource(imageRes)
-            }
-        })
-
-        heroViewModel?.rank?.observe(this, Observer {
-            it?.let { rank ->
-                binding?.contentMain?.tvRank?.text = rank.toString()
-            }
-        })
+        binding?.contentMain?.heroViewModel = heroViewModel
     }
 
     private fun fetchHeroData() {
