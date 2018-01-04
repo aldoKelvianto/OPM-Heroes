@@ -18,43 +18,69 @@
         tools:context="com.aldoapps.opmsclass.MainActivity"
         tools:showIn="@layout/activity_main">
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:isVisible="@{heroViewModel.isLoading}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iv_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:loadImage="@{heroViewModel.photo}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/ic_launcher" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="I'm just a guys who do hero for fun" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{heroViewModel.name}"
-            app:layout_constraintLeft_toRightOf="@id/iv_photo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Tatsumaki" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Saitama" />
 
-        <TextView
-            android:id="@+id/tv_rank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{heroViewModel.rank}"
-            app:layout_constraintLeft_toRightOf="@id/iv_photo"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
-            tools:text="2" />
+            <!-- TODO: Remove this hack -->
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    app:isVisible="@{heroViewModel.isLoading}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:loadImage="@{heroViewModel.photo}"
+                    tools:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{heroViewModel.name}"
+                    app:layout_constraintLeft_toRightOf="@id/iv_photo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Tatsumaki" />
+
+                <TextView
+                    android:id="@+id/tv_rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{heroViewModel.rank}"
+                    app:layout_constraintLeft_toRightOf="@id/iv_photo"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name"
+                    tools:text="2" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

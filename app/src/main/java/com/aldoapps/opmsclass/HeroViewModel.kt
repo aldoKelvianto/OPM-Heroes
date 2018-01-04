@@ -3,6 +3,9 @@ package com.aldoapps.opmsclass
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.databinding.ObservableBoolean
+import android.databinding.ObservableField
+import android.databinding.ObservableInt
 import android.os.AsyncTask
 
 /**
@@ -11,10 +14,10 @@ import android.os.AsyncTask
 class HeroViewModel(application: Application) : AndroidViewModel(application) {
 
     val hero: MutableLiveData<Hero> = MutableLiveData()
-    var name: String? = "Saitama"
-    var photo: Int = R.mipmap.ic_launcher_round
-    var rank: String = "0"
-    var isLoading = false
+    var name = ObservableField<String>()
+    var photo = ObservableInt()
+    var rank = ObservableField<String>()
+    var isLoading = ObservableBoolean()
 
     interface Callback<in T> {
         fun onFinished(hero: T)
@@ -26,24 +29,25 @@ class HeroViewModel(application: Application) : AndroidViewModel(application) {
                 bindData(hero)
             }
         })
-        isLoading = true
+        isLoading.set(true)
     }
 
     fun fetchDataForMePlease() {
-        isLoading = true
+        isLoading.set(true)
 
         HeroViewModel.HeroFetcher(HeroDatabase, object : HeroViewModel.Callback<Hero> {
             override fun onFinished(hero: Hero) {
-                isLoading = false
+                isLoading.set(false)
+
                 this@HeroViewModel.hero.value = hero
             }
         }).execute("Blast")
     }
 
     private fun bindData(hero: Hero) {
-        name = hero.name
-        photo = hero.photo
-        rank = hero.rank.toString()
+        name.set(hero.name)
+        photo.set(hero.photo)
+        rank.set(hero.rank.toString())
     }
 
     class HeroFetcher(private val heroDb: HeroDatabase, private val callback: Callback<Hero>) : AsyncTask<String, Int, Hero>() {

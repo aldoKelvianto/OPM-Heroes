@@ -23,7 +23,7 @@ object HeroDatabase {
         return heroMap.get(name)
     }
 
-    private fun getDuration() = Random().nextInt(2_000).toLong()
+    private fun getDuration() = Random().nextInt(5_000).toLong()
 
     public fun getDefaultHero() = Hero("Saitama", "Caped Baldy", R.mipmap.ic_launcher_round, 0, "One Punch Man")
 }
