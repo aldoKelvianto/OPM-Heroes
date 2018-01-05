@@ -1,12 +1,12 @@
 package com.aldoapps.opmsclass
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
+import com.aldoapps.opmsclass.herolist.HeroViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         heroViewModel = ViewModelProviders.of(this).get(HeroViewModel::class.java)
+        heroViewModel?.hero?.observe(this, Observer {
+            it?.let { hero ->
+                heroViewModel?.bindData(hero)
+            }
+        })
         binding?.contentMain?.heroViewModel = heroViewModel
     }
 

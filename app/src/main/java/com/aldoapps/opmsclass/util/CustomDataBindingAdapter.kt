@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass
+package com.aldoapps.opmsclass.util
 
 import android.databinding.BindingAdapter
 import android.view.View

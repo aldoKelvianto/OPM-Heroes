@@ -6,8 +6,12 @@
     <data>
 
         <variable
+            name="quoteViewModel"
+            type="com.aldoapps.opmsclass.quote.QuoteViewModel" />
+
+        <variable
             name="heroViewModel"
-            type="com.aldoapps.opmsclass.HeroViewModel" />
+            type="com.aldoapps.opmsclass.herolist.HeroViewModel" />
 
     </data>
 
@@ -28,11 +32,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@{quoteViewModel.quote}"
                 tools:text="I'm just a guys who do hero for fun" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@{quoteViewModel.author}"
                 tools:text="Saitama" />
 
             <!-- TODO: Remove this hack -->

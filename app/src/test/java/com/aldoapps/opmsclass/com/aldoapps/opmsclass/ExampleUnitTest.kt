@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass
+package com.aldoapps.opmsclass.com.aldoapps.opmsclass
 
 import org.junit.Test
 

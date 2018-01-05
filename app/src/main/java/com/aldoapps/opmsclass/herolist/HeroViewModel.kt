@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass
+package com.aldoapps.opmsclass.herolist
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
@@ -24,18 +24,13 @@ class HeroViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     init {
-        hero.observeForever({
-            it?.let { hero ->
-                bindData(hero)
-            }
-        })
         isLoading.set(true)
     }
 
     fun fetchDataForMePlease() {
         isLoading.set(true)
 
-        HeroViewModel.HeroFetcher(HeroDatabase, object : HeroViewModel.Callback<Hero> {
+        HeroFetcher(HeroDatabase, object : Callback<Hero> {
             override fun onFinished(hero: Hero) {
                 isLoading.set(false)
 
@@ -44,7 +39,7 @@ class HeroViewModel(application: Application) : AndroidViewModel(application) {
         }).execute("Blast")
     }
 
-    private fun bindData(hero: Hero) {
+    fun bindData(hero: Hero) {
         name.set(hero.name)
         photo.set(hero.photo)
         rank.set(hero.rank.toString())

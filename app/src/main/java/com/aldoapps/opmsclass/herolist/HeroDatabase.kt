@@ -1,6 +1,7 @@
-package com.aldoapps.opmsclass
+package com.aldoapps.opmsclass.herolist
 
 import android.os.SystemClock
+import com.aldoapps.opmsclass.R
 import java.util.*
 
 /**
