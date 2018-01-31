@@ -10,13 +10,17 @@ import android.databinding.ObservableInt
 /**
  * Created by aldo on 04/01/18.
  */
-class HeroViewModel(application: Application) : AndroidViewModel(application) {
+class HeroViewModel(application: Application) : AndroidViewModel(application), Callback<HeroEntity> {
 
-    val hero: MutableLiveData<Hero> = MutableLiveData()
+    val heroEntity: MutableLiveData<HeroEntity> = MutableLiveData()
     var name = ObservableField<String>()
     var photo = ObservableInt()
     var rank = ObservableField<String>()
     var isLoading = ObservableBoolean()
+
+    private val getHero by lazy {
+        GetHero(HeroDatabase, this)
+    }
 
     init {
         isLoading.set(true)
@@ -24,19 +28,17 @@ class HeroViewModel(application: Application) : AndroidViewModel(application) {
 
     fun fetchDataForMePlease() {
         isLoading.set(true)
-
-        GetHero(HeroDatabase, object : Callback<Hero> {
-            override fun onFinished(hero: Hero) {
-                isLoading.set(false)
-
-                this@HeroViewModel.hero.value = hero
-            }
-        }).execute("Blast")
+        getHero.execute("Blast")
     }
 
-    fun bindData(hero: Hero) {
-        name.set(hero.name)
+    fun bindData(hero: HeroModel) {
+        name.set(hero.alias)
         photo.set(hero.photo)
         rank.set(hero.rank.toString())
+    }
+
+    override fun onFinished(hero: HeroEntity) {
+        isLoading.set(false)
+        heroEntity.value = hero
     }
 }
