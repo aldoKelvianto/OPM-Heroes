@@ -3,6 +3,8 @@ package com.aldoapps.opmsclass.com.aldoapps.opmsclass.quote
 import com.aldoapps.opmsclass.quote.QuoteDatabase
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.text.IsEqualIgnoringCase
 import org.junit.Test
 
 /**
@@ -37,5 +39,6 @@ class QuoteDatabaseTest {
         // When
         val saitamaQuotes = QuoteDatabase.getQuotesByAuthor("Saitama")
         assertEquals(11, saitamaQuotes.size)
+        assertThat(saitamaQuotes.first().author, IsEqualIgnoringCase("saiTAMA"))
     }
 }

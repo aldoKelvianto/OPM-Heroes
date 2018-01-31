@@ -37,5 +37,4 @@ class MainActivity : AppCompatActivity() {
     private fun fetchHeroData() {
         heroViewModel?.fetchDataForMePlease()
     }
-
 }

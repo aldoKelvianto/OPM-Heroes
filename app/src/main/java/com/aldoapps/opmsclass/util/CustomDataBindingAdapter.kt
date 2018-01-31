@@ -16,9 +16,5 @@ fun loadImageWithResource(view: ImageView, resId: Int) {
 
 @BindingAdapter("isVisible")
 fun setVisibility(view: ProgressBar, isVisible: Boolean) {
-    if (isVisible) {
-        view.visibility = View.VISIBLE
-    } else {
-        view.visibility = View.GONE
-    }
+    view.visibility = if (isVisible) View.VISIBLE else View.GONE
 }

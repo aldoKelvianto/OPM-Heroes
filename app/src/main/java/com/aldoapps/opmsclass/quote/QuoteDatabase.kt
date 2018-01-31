@@ -17,9 +17,9 @@ object QuoteDatabase {
                 Quote("Saitama", "Human beings are strong because we have the ability to change ourselves."),
                 Quote("Saitama", "If you really want to be strong... Stop caring about what your surrounding thinks of you!"),
                 Quote("Saitama", """Do you honestly think that you won't get any stronger for the rest of your life?
-                    Instead of sitting around frustated, it's better to keep on moving forward.
+                    Instead of sitting around frustrated, it's better to keep on moving forward.
                 """),
-                Quote("Saitama", """"Heroes and the police don't do their jobs because someone says "please". Right? """),
+                Quote("Saitama", """"Heroes and the police don't do their jobs because someone says "please". Right?"""),
                 Quote("Atomic Samurai", "I only accept the strong."),
                 Quote("Atomic Samurai", "I'm not middle-aged. I'm 37"),
                 Quote("Bang", "You do not need to know who the victor is within a battle using martial arts. That is the beauty of this art"),
