@@ -41,10 +41,12 @@
                 android:text="@{quoteViewModel.author}"
                 tools:text="Saitama" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_hero"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="HERO LIST"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -56,6 +58,11 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_hero"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

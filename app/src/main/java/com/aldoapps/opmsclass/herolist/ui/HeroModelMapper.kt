@@ -10,5 +10,5 @@ object HeroModelMapper {
     fun transformHeroEntity(heroEntity: HeroEntity): HeroModel =
             HeroModel(heroEntity.alias,
                     heroEntity.photo,
-                    heroEntity.rank)
+                    heroEntity.rank.toString())
 }

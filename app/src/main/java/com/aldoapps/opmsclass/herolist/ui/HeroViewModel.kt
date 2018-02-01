@@ -4,8 +4,6 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
 import com.aldoapps.opmsclass.herolist.interactor.Callback
 import com.aldoapps.opmsclass.herolist.interactor.GetHero
 import com.aldoapps.opmsclass.herolist.repository.HeroDatabase
@@ -17,28 +15,17 @@ import com.aldoapps.opmsclass.herolist.repository.HeroEntity
 class HeroViewModel(application: Application) : AndroidViewModel(application), Callback<HeroEntity> {
 
     val heroEntity: MutableLiveData<HeroEntity> = MutableLiveData()
-    var name = ObservableField<String>()
-    var photo = ObservableInt()
-    var rank = ObservableField<String>()
     var isLoading = ObservableBoolean()
 
-    private val getHero by lazy {
-        GetHero(HeroDatabase, this)
-    }
+    private fun getHero() = GetHero(HeroDatabase, this)
 
     init {
         isLoading.set(true)
     }
 
-    fun fetchDataForMePlease() {
+    fun queryHeroList() {
         isLoading.set(true)
-        getHero.execute("Blast")
-    }
-
-    fun bindData(hero: HeroModel) {
-        name.set(hero.alias)
-        photo.set(hero.photo)
-        rank.set(hero.rank.toString())
+        getHero().execute("Blast")
     }
 
     override fun onFinished(hero: HeroEntity) {

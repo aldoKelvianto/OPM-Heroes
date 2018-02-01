@@ -24,6 +24,15 @@ android {
     dataBinding {
         enabled = true
     }
+    testOptions {
+        unitTests.all {
+            jvmArgs '-noverify'
+        }
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.returnDefaultValues = true
+    }
 }
 
 android.testOptions {
@@ -53,13 +62,21 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:27.0.2'
 
-    testImplementation 'junit:junit:4.12'
     testImplementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+    testImplementation 'org.assertj:assertj-core:3.6.2'
+
+    testImplementation 'org.mockito:mockito-core:2.8.9'
+    testImplementation "org.powermock:powermock-api-mockito2:$project.powerMockitoVersion"
+    testImplementation "org.powermock:powermock-module-junit4:$project.powerMockitoVersion"
+    testImplementation "org.powermock:powermock-module-junit4-rule:$project.powerMockitoVersion"
+    testImplementation "org.powermock:powermock-classloading-xstream:$project.powerMockitoVersion"
+
     // (Required) Writing and executing Unit Tests on the JUnit Platform.
     testImplementation junit5.unitTests()
 
     // (Optional) If you need "Parameterized Tests".
     testImplementation junit5.parameterized()
+    testImplementation 'org.junit.vintage:junit-vintage-engine:4.12.3'
 
     // (Optional) For running tests inside Android Studio 3.x
     // Please refer to the "Android Studio Workarounds" section for more insight on this.

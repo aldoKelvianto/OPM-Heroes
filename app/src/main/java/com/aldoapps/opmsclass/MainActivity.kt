@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        initRecyclerView()
         initViewModel()
         binding.fab.setOnClickListener { fetchHeroData() }
-        initRecyclerView()
     }
 
     private fun initRecyclerView() {
@@ -41,17 +41,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         heroViewModel = ViewModelProviders.of(this).get(HeroViewModel::class.java)
+        binding.contentMain?.heroViewModel = heroViewModel
+
         val heroEntity = heroViewModel.heroEntity
         Transformations.map(heroEntity, {
             HeroModelMapper.transformHeroEntity(it)
         }).observe(this, Observer {
             it ?: return@Observer
-            heroViewModel.bindData(it)
+            heroViewModel.isLoading.set(false)
+            adapter.add(it)
         })
-        binding.contentMain?.heroViewModel = heroViewModel
     }
 
     private fun fetchHeroData() {
-        heroViewModel.fetchDataForMePlease()
+        heroViewModel.queryHeroList()
     }
 }
