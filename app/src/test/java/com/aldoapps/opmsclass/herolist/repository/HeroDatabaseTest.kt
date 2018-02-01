@@ -14,11 +14,6 @@ import org.powermock.modules.junit4.PowerMockRunner
 @RunWith(PowerMockRunner::class)
 @PrepareForTest(SystemClock::class)
 class HeroDatabaseTest {
-//
-//    @BeforeAll
-//    fun setUp() {
-//
-//    }
 
     @Test
     fun getHeroList() {
@@ -30,20 +25,11 @@ class HeroDatabaseTest {
         assertThat(size).isEqualTo(5)
     }
 
-    //    @ParameterizedTest
-//    @CsvSource(
-//            "Tatsumaki, Tornado of Terror",
-//            "Bang, Silver Fang",
-//            "King, Strongest Man",
-//            "Saitama, Caped Baldy"
-//    )
-//    fun getHeroAlias(heroName: String, alias: String) {
     @Test
     fun getHeroAlias() {
         val heroName = "Tatsumaki"
         val alias = "Tornado of Terror"
         PowerMockito.mockStatic(SystemClock::class.java)
-//        PowerMockito.`when`(SystemClock.currentThreadTimeMillis()).thenReturn(1L);
 
         // When
         val hero = HeroDatabase.getHero(heroName)

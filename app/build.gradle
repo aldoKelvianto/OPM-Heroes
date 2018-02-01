@@ -35,6 +35,26 @@ android {
     }
 }
 
+android.testOptions {
+    // Configuration closure added by the plugin;
+    // all configurable parameters related to JUnit 5 can be found here
+    junitPlatform {
+        // The JUnit Jupiter dependency version to use
+        jupiterVersion "5.0.3"
+
+        // The JUnit Vintage Engine dependency version to use
+        vintageVersion "4.12.2"
+
+        // Options related to running unit tests with JUnit 5.
+        unitTests {
+            // Whether or not JUnit 5 test tasks should be affected by
+            // JVM Arguments, System Properties & Environment Variables
+            // declared through "unitTests.all" closures
+            applyDefaultTestOptions true
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -45,12 +65,22 @@ dependencies {
     testImplementation 'org.hamcrest:java-hamcrest:2.0.0.0'
     testImplementation 'org.assertj:assertj-core:3.6.2'
 
-    testImplementation 'junit:junit:4.4'
     testImplementation 'org.mockito:mockito-core:2.8.9'
     testImplementation "org.powermock:powermock-api-mockito2:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-module-junit4:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-module-junit4-rule:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-classloading-xstream:$project.powerMockitoVersion"
+
+    // (Required) Writing and executing Unit Tests on the JUnit Platform.
+    testImplementation junit5.unitTests()
+
+    // (Optional) If you need "Parameterized Tests".
+    testImplementation junit5.parameterized()
+    testImplementation 'org.junit.vintage:junit-vintage-engine:4.12.3'
+
+    // (Optional) For running tests inside Android Studio 3.x
+    // Please refer to the "Android Studio Workarounds" section for more insight on this.
+    testCompileOnly junit5.unitTestsRuntime()
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
