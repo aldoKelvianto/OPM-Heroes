@@ -6,6 +6,8 @@ import junit.framework.Assert.assertTrue
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.text.IsEqualIgnoringCase
 import org.junit.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 /**
  * Created by aldo on 05/01/18.
@@ -40,5 +42,16 @@ class QuoteDatabaseTest {
         val saitamaQuotes = QuoteDatabase.getQuotesByAuthor("Saitama")
         assertEquals(11, saitamaQuotes.size)
         assertThat(saitamaQuotes.first().author, IsEqualIgnoringCase("saiTAMA"))
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            "Tatsumaki, 1",
+            "King, 2",
+            "Saitama, 11"
+    )
+    fun testQuoteSize(author: String, expected: Int) {
+        val quote = QuoteDatabase.getQuotesByAuthor(author)
+        assertEquals(expected, quote.size)
     }
 }
