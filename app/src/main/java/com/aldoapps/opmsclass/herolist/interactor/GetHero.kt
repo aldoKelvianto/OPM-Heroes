@@ -1,6 +1,8 @@
-package com.aldoapps.opmsclass.herolist
+package com.aldoapps.opmsclass.herolist.interactor
 
 import android.os.AsyncTask
+import com.aldoapps.opmsclass.herolist.repository.HeroDatabase
+import com.aldoapps.opmsclass.herolist.repository.HeroEntity
 
 /**
  * Created by aldo on 31/01/18.

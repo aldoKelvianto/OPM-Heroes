@@ -6,39 +6,52 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
-import com.aldoapps.opmsclass.herolist.HeroModelMapper
-import com.aldoapps.opmsclass.herolist.HeroViewModel
+import com.aldoapps.opmsclass.herolist.ui.HeroAdapter
+import com.aldoapps.opmsclass.herolist.ui.HeroModelMapper
+import com.aldoapps.opmsclass.herolist.ui.HeroViewModel
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var binding: ActivityMainBinding? = null
+    private lateinit var binding: ActivityMainBinding
 
-    private var heroViewModel: HeroViewModel? = null
+    private lateinit var heroViewModel: HeroViewModel
+
+    private lateinit var adapter: HeroAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setSupportActionBar(binding?.toolbar)
+        setSupportActionBar(binding.toolbar)
 
         initViewModel()
-        binding?.fab?.setOnClickListener { fetchHeroData() }
+        binding.fab.setOnClickListener { fetchHeroData() }
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        rv_hero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rv_hero.setHasFixedSize(true)
+        adapter = HeroAdapter()
+        rv_hero.adapter = adapter
     }
 
     private fun initViewModel() {
         heroViewModel = ViewModelProviders.of(this).get(HeroViewModel::class.java)
-        val heroEntity = heroViewModel?.heroEntity ?: return
+        val heroEntity = heroViewModel.heroEntity
         Transformations.map(heroEntity, {
             HeroModelMapper.transformHeroEntity(it)
         }).observe(this, Observer {
             it ?: return@Observer
-            heroViewModel?.bindData(it)
+            heroViewModel.bindData(it)
         })
-        binding?.contentMain?.heroViewModel = heroViewModel
+        binding.contentMain?.heroViewModel = heroViewModel
     }
 
     private fun fetchHeroData() {
-        heroViewModel?.fetchDataForMePlease()
+        heroViewModel.fetchDataForMePlease()
     }
 }

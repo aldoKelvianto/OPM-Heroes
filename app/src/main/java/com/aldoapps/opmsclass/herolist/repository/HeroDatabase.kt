@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.herolist
+package com.aldoapps.opmsclass.herolist.repository
 
 import android.os.SystemClock
 import com.aldoapps.opmsclass.R

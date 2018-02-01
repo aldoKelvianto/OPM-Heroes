@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.herolist
+package com.aldoapps.opmsclass.herolist.ui
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
@@ -6,6 +6,10 @@ import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import android.databinding.ObservableInt
+import com.aldoapps.opmsclass.herolist.interactor.Callback
+import com.aldoapps.opmsclass.herolist.interactor.GetHero
+import com.aldoapps.opmsclass.herolist.repository.HeroDatabase
+import com.aldoapps.opmsclass.herolist.repository.HeroEntity
 
 /**
  * Created by aldo on 04/01/18.

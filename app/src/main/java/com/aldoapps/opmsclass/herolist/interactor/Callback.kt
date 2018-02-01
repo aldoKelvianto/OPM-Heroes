@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.herolist
+package com.aldoapps.opmsclass.herolist.interactor
 
 /**
  * Created by aldo on 31/01/18.

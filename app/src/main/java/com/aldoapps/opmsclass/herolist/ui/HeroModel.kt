@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.herolist
+package com.aldoapps.opmsclass.herolist.ui
 
 /**
  * Created by aldo on 01/02/18.
