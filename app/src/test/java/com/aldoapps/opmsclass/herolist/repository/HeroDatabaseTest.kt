@@ -13,7 +13,7 @@ import org.powermock.modules.junit4.PowerMockRunner
  */
 @RunWith(PowerMockRunner::class)
 @PrepareForTest(SystemClock::class)
-public class HeroDatabaseTest {
+class HeroDatabaseTest {
 //
 //    @BeforeAll
 //    fun setUp() {
@@ -38,7 +38,8 @@ public class HeroDatabaseTest {
 //            "Saitama, Caped Baldy"
 //    )
 //    fun getHeroAlias(heroName: String, alias: String) {
-    fun getHeroAlias(heroName: String, alias: String) {
+    @Test
+    fun getHeroAlias() {
         val heroName = "Tatsumaki"
         val alias = "Tornado of Terror"
         PowerMockito.mockStatic(SystemClock::class.java)

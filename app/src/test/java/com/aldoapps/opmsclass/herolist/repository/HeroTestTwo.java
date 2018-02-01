@@ -3,6 +3,7 @@ package com.aldoapps.opmsclass.herolist.repository;
 import android.os.SystemClock;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -28,7 +29,11 @@ public class HeroTestTwo {
 //            "Bang, Silver Fang",
 //            "King, Strongest Man",
 //            "Saitama, Caped Baldy"})
-    public void getHeroAlias(String heroName, String alias) throws Exception {
+//    public void getHeroAlias(String heroName, String alias) throws Exception {
+    @Test
+    public void getHeroAlias() throws Exception {
+        String heroName = "Saitama";
+        String alias = "Caped Baldy";
 //        PowerMockito.mockStatic(SystemClock.class);
 //        PowerMockito.when(SystemClock.currentThreadTimeMillis()).thenReturn(1L);
 
