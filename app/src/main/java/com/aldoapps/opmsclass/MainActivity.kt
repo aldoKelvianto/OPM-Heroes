@@ -28,15 +28,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         heroViewModel = ViewModelProviders.of(this).get(HeroViewModel::class.java)
-        Transformations
-                .map(heroViewModel?.heroEntity!!, {
-                    HeroModelMapper.transformHeroEntity(it)
-                })
-                .observe(this, Observer {
-                    it?.let {
-                        heroViewModel?.bindData(it)
-                    }
-                })
+        val heroEntity = heroViewModel?.heroEntity ?: return
+        Transformations.map(heroEntity, {
+            HeroModelMapper.transformHeroEntity(it)
+        }).observe(this, Observer {
+            it ?: return@Observer
+            heroViewModel?.bindData(it)
+        })
         binding?.contentMain?.heroViewModel = heroViewModel
     }
 
