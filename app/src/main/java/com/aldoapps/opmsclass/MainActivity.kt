@@ -44,13 +44,14 @@ class MainActivity : AppCompatActivity() {
         binding.contentMain?.heroViewModel = heroViewModel
 
         val heroEntity = heroViewModel.heroEntity
+        /*
         Transformations.map(heroEntity, {
             HeroModelMapper.transformHeroEntity(it)
         }).observe(this, Observer {
             it ?: return@Observer
             heroViewModel.isLoading.set(false)
-            adapter.add(it)
-        })
+//            adapter.add(it)
+        })*/
     }
 
     private fun fetchHeroData() {

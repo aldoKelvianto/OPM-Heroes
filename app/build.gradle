@@ -70,6 +70,7 @@ dependencies {
     testImplementation "org.powermock:powermock-module-junit4:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-module-junit4-rule:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-classloading-xstream:$project.powerMockitoVersion"
+    testImplementation "org.robolectric:robolectric:3.6.1"
 
     // (Required) Writing and executing Unit Tests on the JUnit Platform.
     testImplementation junit5.unitTests()

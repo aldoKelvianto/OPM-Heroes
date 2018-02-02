@@ -26,6 +26,17 @@ class HeroDatabaseTest {
     }
 
     @Test
+    fun getDefaultHero() {
+        // Given
+        // When
+        val defaultHero = HeroDatabase.getDefaultHero()
+
+        assertThat(defaultHero.name).isEqualToIgnoringCase("saitama")
+        assertThat(defaultHero.alias).isEqualToIgnoringCase("caped baldy")
+        assertThat(defaultHero.rank).isEqualTo(0)
+    }
+
+    @Test
     fun getHeroAlias() {
         val heroName = "Tatsumaki"
         val alias = "Tornado of Terror"
