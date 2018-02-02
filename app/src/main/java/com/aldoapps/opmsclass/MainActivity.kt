@@ -43,15 +43,14 @@ class MainActivity : AppCompatActivity() {
         heroViewModel = ViewModelProviders.of(this).get(HeroViewModel::class.java)
         binding.contentMain?.heroViewModel = heroViewModel
 
-        val heroEntity = heroViewModel.heroEntity
-        /*
-        Transformations.map(heroEntity, {
+        val heroListEntity = heroViewModel.heroListEntity
+        Transformations.map(heroListEntity, {
             HeroModelMapper.transformHeroEntity(it)
         }).observe(this, Observer {
             it ?: return@Observer
             heroViewModel.isLoading.set(false)
-//            adapter.add(it)
-        })*/
+            adapter.addHeroList(it)
+        })
     }
 
     private fun fetchHeroData() {

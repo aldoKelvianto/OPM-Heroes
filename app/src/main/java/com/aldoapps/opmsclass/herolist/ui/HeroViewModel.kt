@@ -14,7 +14,7 @@ import com.aldoapps.opmsclass.herolist.repository.HeroEntity
  */
 class HeroViewModel(application: Application) : AndroidViewModel(application), Callback<List<HeroEntity>> {
 
-    val heroEntity: MutableLiveData<List<HeroEntity>> = MutableLiveData()
+    val heroListEntity: MutableLiveData<List<HeroEntity>> = MutableLiveData()
     var isLoading = ObservableBoolean()
 
     private fun getHero() = GetHeroList(HeroDatabase, this)
@@ -30,6 +30,6 @@ class HeroViewModel(application: Application) : AndroidViewModel(application), C
 
     override fun onFinished(heroList: List<HeroEntity>) {
         isLoading.set(false)
-        heroEntity.value = heroList
+        heroListEntity.value = heroList
     }
 }

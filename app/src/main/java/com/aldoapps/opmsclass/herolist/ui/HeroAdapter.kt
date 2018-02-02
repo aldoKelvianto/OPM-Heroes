@@ -25,6 +25,11 @@ class HeroAdapter : RecyclerView.Adapter<HeroViewHolder>() {
         holder?.setHero(hero)
     }
 
+    fun addHeroList(heroList: List<HeroModel>) {
+        this.heroList.addAll(heroList)
+        notifyDataSetChanged()
+    }
+
     fun add(hero: HeroModel) {
         heroList.add(hero)
         notifyItemInserted(heroList.size)
