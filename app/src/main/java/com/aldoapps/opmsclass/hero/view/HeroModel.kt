@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.hero.ui
+package com.aldoapps.opmsclass.hero.view
 
 /**
  * Created by aldo on 01/02/18.

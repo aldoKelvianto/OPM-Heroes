@@ -35,7 +35,7 @@ class HeroDatabaseTest {
         // When
         val heroList = HeroDatabase.getHeroList()
         // Then
-        assertThat(heroList).hasSize(5)
+        assertThat(heroList).hasSize(13)
     }
 
     @Test

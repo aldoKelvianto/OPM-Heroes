@@ -11,7 +11,7 @@
 
         <variable
             name="heroViewModel"
-            type="com.aldoapps.opmsclass.hero.ui.HeroViewModel" />
+            type="com.aldoapps.opmsclass.hero.view.HeroViewModel" />
 
     </data>
 

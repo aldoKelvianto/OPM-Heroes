@@ -1,17 +1,15 @@
 package com.aldoapps.opmsclass.com.aldoapps.opmsclass.quote
 
-import com.aldoapps.opmsclass.quote.QuoteDatabase
+import com.aldoapps.opmsclass.quote.repository.QuoteDatabase
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import org.powermock.modules.junit4.rule.PowerMockRule
 
 /**
  * Created by aldo on 05/01/18.
  */
-class QuoteDatabaseTest {
+class QuoteEntityDatabaseTest {
 
     @Test
     fun getAllQuoteTest() {
@@ -19,7 +17,7 @@ class QuoteDatabaseTest {
         // When
         val quotes = QuoteDatabase.getQuotes()
         // Then
-        assertThat(quotes.size).isEqualTo(30)
+        assertThat(quotes.size).isEqualTo(33)
     }
 
     @Test
@@ -30,7 +28,7 @@ class QuoteDatabaseTest {
 
         // Then
         assertThat(tatsumakiQuotes).hasSize(1)
-        assertThat(tatsumakiQuotes.first().author).isEqualToIgnoringCase("TATSUMAKI")
+        assertThat(tatsumakiQuotes.first().hero.name).isEqualToIgnoringCase("TATSUMAKI")
 
         // When
         val kingQuotes = QuoteDatabase.getQuotesByAuthor("KING");
@@ -41,7 +39,7 @@ class QuoteDatabaseTest {
         // When
         val saitamaQuotes = QuoteDatabase.getQuotesByAuthor("Saitama")
         assertThat(saitamaQuotes).hasSize(11)
-        assertThat(saitamaQuotes.first().author).isEqualToIgnoringCase("saiTAMA")
+        assertThat(saitamaQuotes.first().hero.name).isEqualToIgnoringCase("saiTAMA")
     }
 
     @ParameterizedTest

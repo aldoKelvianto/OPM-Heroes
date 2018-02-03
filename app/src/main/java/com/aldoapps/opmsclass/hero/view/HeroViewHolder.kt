@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.hero.ui
+package com.aldoapps.opmsclass.hero.view
 
 import android.support.v7.widget.RecyclerView
 import com.aldoapps.opmsclass.databinding.ItemHeroBinding

@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.hero.ui
+package com.aldoapps.opmsclass.hero.view
 
 import com.aldoapps.opmsclass.hero.repository.HeroEntity
 import com.aldoapps.opmsclass.hero.repository.toHeroModel

@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
-import com.aldoapps.opmsclass.hero.ui.HeroAdapter
-import com.aldoapps.opmsclass.hero.ui.HeroModelMapper
-import com.aldoapps.opmsclass.hero.ui.HeroViewModel
+import com.aldoapps.opmsclass.hero.view.HeroAdapter
+import com.aldoapps.opmsclass.hero.view.HeroModelMapper
+import com.aldoapps.opmsclass.hero.view.HeroViewModel
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {

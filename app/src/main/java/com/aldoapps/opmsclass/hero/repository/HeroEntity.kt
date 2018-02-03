@@ -1,6 +1,6 @@
 package com.aldoapps.opmsclass.hero.repository
 
-import com.aldoapps.opmsclass.hero.ui.HeroModel
+import com.aldoapps.opmsclass.hero.view.HeroModel
 
 /**
  * Created by aldo on 04/01/18.

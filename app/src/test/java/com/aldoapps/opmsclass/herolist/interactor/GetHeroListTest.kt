@@ -40,7 +40,7 @@ class GetHeroListTest {
         GetHeroList(heroDatabase, object : GetHeroListCallback<List<HeroEntity>> {
             override fun onFinished(heroList: List<HeroEntity>) {
                 assertThat(heroList).isInstanceOf(List::class.java)
-                assertThat(heroList).hasSize(5)
+                assertThat(heroList).hasSize(13)
             }
         }).execute()
     }
@@ -51,8 +51,8 @@ class GetHeroListTest {
         // When
         GetHeroList(heroDatabase, mockGetHeroListCallback).execute()
 
-        val timeOutDuration = 3_500L
-        Thread.sleep(timeOutDuration)
+//        val timeOutDuration = 3_500L
+//        Thread.sleep(timeOutDuration)
 
         // Then
         Mockito.verify(mockGetHeroListCallback).onFinished(anyList())

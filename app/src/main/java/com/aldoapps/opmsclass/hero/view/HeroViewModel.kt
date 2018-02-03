@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.hero.ui
+package com.aldoapps.opmsclass.hero.view
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
