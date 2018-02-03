@@ -17,7 +17,7 @@ class GetHeroListTest {
     fun testGetHero() {
         GetHeroList(HeroDatabase, object : Callback<List<HeroEntity>> {
             override fun onFinished(heroList: List<HeroEntity>) {
-                assertThat(heroList.size).isEqualTo(5)
+                assertThat(heroList).hasSize(5)
             }
         })
     }

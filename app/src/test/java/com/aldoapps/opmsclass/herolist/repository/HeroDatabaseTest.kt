@@ -18,11 +18,10 @@ class HeroDatabaseTest {
     @Test
     fun getHeroList() {
         // Given
-        val heroList = HeroDatabase.getHeroList()
         // When
-        val size = heroList.size
+        val heroList = HeroDatabase.getHeroList()
         // Then
-        assertThat(size).isEqualTo(5)
+        assertThat(heroList).hasSize(5)
     }
 
     @Test

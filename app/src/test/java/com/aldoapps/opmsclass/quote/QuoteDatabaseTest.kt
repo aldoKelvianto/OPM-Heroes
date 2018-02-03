@@ -27,18 +27,18 @@ class QuoteDatabaseTest {
         val tatsumakiQuotes = QuoteDatabase.getQuotesByAuthor("Tatsumaki")
 
         // Then
-        assertThat(tatsumakiQuotes.size).isEqualTo(1)
+        assertThat(tatsumakiQuotes).hasSize(1)
         assertThat(tatsumakiQuotes.first().author).isEqualToIgnoringCase("TATSUMAKI")
 
         // When
         val kingQuotes = QuoteDatabase.getQuotesByAuthor("KING");
         // Then
-        assertThat(kingQuotes.size).isEqualTo(2)
+        assertThat(kingQuotes).hasSize(2)
         assertThat(kingQuotes.first().quote).isEqualTo("Romance games are my oasis.")
 
         // When
         val saitamaQuotes = QuoteDatabase.getQuotesByAuthor("Saitama")
-        assertThat(saitamaQuotes.size).isEqualTo(11)
+        assertThat(saitamaQuotes).hasSize(11)
         assertThat(saitamaQuotes.first().author).isEqualToIgnoringCase("saiTAMA")
     }
 
@@ -50,6 +50,6 @@ class QuoteDatabaseTest {
     )
     fun testQuoteSize(author: String, expected: Int) {
         val quote = QuoteDatabase.getQuotesByAuthor(author)
-        assertThat(quote.size).isEqualTo(expected)
+        assertThat(quote).hasSize(expected)
     }
 }
