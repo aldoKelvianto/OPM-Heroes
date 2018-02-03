@@ -2,9 +2,11 @@ package com.aldoapps.opmsclass.com.aldoapps.opmsclass.quote
 
 import com.aldoapps.opmsclass.quote.QuoteDatabase
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
+import org.powermock.modules.junit4.rule.PowerMockRule
 
 /**
  * Created by aldo on 05/01/18.
