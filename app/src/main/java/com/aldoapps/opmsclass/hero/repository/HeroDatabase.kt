@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.herolist.repository
+package com.aldoapps.opmsclass.hero.repository
 
 import android.os.SystemClock
 import com.aldoapps.opmsclass.R
@@ -13,11 +13,11 @@ object HeroDatabase {
     private var heroMap: HashMap<String, HeroEntity> = HashMap()
 
     init {
-        heroMap.put("Blast", HeroEntity("Blast", "Blast", R.mipmap.ic_launcher_round, 1, "Strongest"))
-        heroMap.put("Tatsumaki", HeroEntity("Tatsumaki", "Tornado of Terror", R.mipmap.ic_launcher_round, 2, "Esper"))
-        heroMap.put("Bang", HeroEntity("Bang", "Silver Fang", R.mipmap.ic_launcher_round, 3, "Matrial Artist"))
-        heroMap.put("King", HeroEntity("King", "Strongest Man", R.mipmap.ic_launcher_round, 7, "Gamer"))
-        heroMap.put("Saitama", HeroEntity("Saitama", "Caped Baldy", R.mipmap.ic_launcher_round, 0, "One Punch Man"))
+        heroMap["Blast"] = HeroEntity("Blast", "Blast", R.mipmap.ic_launcher_round, 1, "Strongest")
+        heroMap["Tatsumaki"] = HeroEntity("Tatsumaki", "Tornado of Terror", R.mipmap.ic_launcher_round, 2, "Esper")
+        heroMap["Bang"] = HeroEntity("Bang", "Silver Fang", R.mipmap.ic_launcher_round, 3, "Matrial Artist")
+        heroMap["King"] = HeroEntity("King", "Strongest Man", R.mipmap.ic_launcher_round, 7, "Gamer")
+        heroMap["Saitama"] = HeroEntity("Saitama", "Caped Baldy", R.mipmap.ic_launcher_round, 0, "One Punch Man")
     }
 
     // Long operation

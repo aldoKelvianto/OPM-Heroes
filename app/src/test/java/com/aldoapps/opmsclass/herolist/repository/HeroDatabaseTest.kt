@@ -1,6 +1,7 @@
 package com.aldoapps.opmsclass.herolist.repository
 
 import android.os.SystemClock
+import com.aldoapps.opmsclass.hero.repository.HeroDatabase
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule

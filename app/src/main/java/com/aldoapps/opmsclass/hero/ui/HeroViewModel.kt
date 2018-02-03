@@ -1,18 +1,18 @@
-package com.aldoapps.opmsclass.herolist.ui
+package com.aldoapps.opmsclass.hero.ui
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableBoolean
-import com.aldoapps.opmsclass.herolist.interactor.Callback
-import com.aldoapps.opmsclass.herolist.interactor.GetHeroList
-import com.aldoapps.opmsclass.herolist.repository.HeroDatabase
-import com.aldoapps.opmsclass.herolist.repository.HeroEntity
+import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
+import com.aldoapps.opmsclass.hero.interactor.GetHeroList
+import com.aldoapps.opmsclass.hero.repository.HeroDatabase
+import com.aldoapps.opmsclass.hero.repository.HeroEntity
 
 /**
  * Created by aldo on 04/01/18.
  */
-class HeroViewModel(application: Application) : AndroidViewModel(application), Callback<List<HeroEntity>> {
+class HeroViewModel(application: Application) : AndroidViewModel(application), GetHeroListCallback<List<HeroEntity>> {
 
     val heroListEntity: MutableLiveData<List<HeroEntity>> = MutableLiveData()
     var isLoading = ObservableBoolean()
@@ -25,7 +25,7 @@ class HeroViewModel(application: Application) : AndroidViewModel(application), C
 
     fun queryHeroList() {
         isLoading.set(true)
-        getHero().execute("Blast")
+        getHero().execute()
     }
 
     override fun onFinished(heroList: List<HeroEntity>) {

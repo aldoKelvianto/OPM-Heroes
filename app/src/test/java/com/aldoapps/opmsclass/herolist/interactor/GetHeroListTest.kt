@@ -1,15 +1,14 @@
 package com.aldoapps.opmsclass.herolist.interactor
 
-import android.os.SystemClock
-import com.aldoapps.opmsclass.herolist.repository.HeroDatabase
-import com.aldoapps.opmsclass.herolist.repository.HeroEntity
-import org.assertj.core.api.Assertions.anyOf
+import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
+import com.aldoapps.opmsclass.hero.interactor.GetHeroList
+import com.aldoapps.opmsclass.hero.repository.HeroDatabase
+import com.aldoapps.opmsclass.hero.repository.HeroEntity
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyList
 import org.mockito.Mock
 import org.mockito.Mockito
@@ -29,7 +28,7 @@ class GetHeroListTest {
     val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
     @Mock
-    private lateinit var mockCallback: Callback<List<HeroEntity>>
+    private lateinit var mockGetHeroListCallback: GetHeroListCallback<List<HeroEntity>>
 
     @Before
     fun setup() {
@@ -38,7 +37,7 @@ class GetHeroListTest {
 
     @Test
     fun getHeroFromDb_shouldReturnList() {
-        GetHeroList(heroDatabase, object : Callback<List<HeroEntity>> {
+        GetHeroList(heroDatabase, object : GetHeroListCallback<List<HeroEntity>> {
             override fun onFinished(heroList: List<HeroEntity>) {
                 assertThat(heroList).isInstanceOf(List::class.java)
                 assertThat(heroList).hasSize(5)
@@ -50,14 +49,14 @@ class GetHeroListTest {
     fun getHeroFromDb_shouldTriggerCallback() {
         // Given
         // When
-        GetHeroList(heroDatabase, mockCallback).execute()
+        GetHeroList(heroDatabase, mockGetHeroListCallback).execute()
 
         val timeOutDuration = 3_500L
         Thread.sleep(timeOutDuration)
 
         // Then
-        Mockito.verify(mockCallback).onFinished(anyList())
-        Mockito.verifyNoMoreInteractions(mockCallback)
+        Mockito.verify(mockGetHeroListCallback).onFinished(anyList())
+        Mockito.verifyNoMoreInteractions(mockGetHeroListCallback)
     }
 
 }

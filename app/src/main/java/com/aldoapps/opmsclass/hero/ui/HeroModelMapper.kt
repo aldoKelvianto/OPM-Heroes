@@ -1,7 +1,7 @@
-package com.aldoapps.opmsclass.herolist.ui
+package com.aldoapps.opmsclass.hero.ui
 
-import com.aldoapps.opmsclass.herolist.repository.HeroEntity
-import com.aldoapps.opmsclass.herolist.repository.toHeroModel
+import com.aldoapps.opmsclass.hero.repository.HeroEntity
+import com.aldoapps.opmsclass.hero.repository.toHeroModel
 
 /**
  * Created by aldo on 01/02/18.
