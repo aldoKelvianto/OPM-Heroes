@@ -20,12 +20,6 @@ class QuoteViewModel(application: Application) : AndroidViewModel(application), 
     val author = ObservableField<String>()
     val quote = ObservableField<String>()
 
-    init {
-        quoteEntityLiveData.observe(this, Observer {
-
-        })
-    }
-
     private fun getQuote() = GetRandomQuote(QuoteDatabase, this)
 
     fun getRandomQuote() {

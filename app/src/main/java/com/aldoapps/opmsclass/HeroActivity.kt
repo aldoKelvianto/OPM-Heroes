@@ -29,6 +29,7 @@ class HeroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.setLifecycleOwner(this)
 
         initRecyclerView()
         initViewModel()
@@ -47,15 +48,11 @@ class HeroActivity : AppCompatActivity() {
         heroListViewModel = ViewModelProviders.of(this).get(HeroListViewModel::class.java)
         binding.contentMain?.heroListViewModel = heroListViewModel
 
-        val heroListEntity = heroListViewModel.heroListEntity
-        Transformations.map(heroListEntity, {
-            HeroModelMapper.transformHeroEntity(it)
-        }).observe(this, Observer {
-            it ?: return@Observer
-            heroListViewModel.isLoading.set(false)
-            adapter.addHeroList(it)
+        heroListViewModel.heroListLiveData.observe(this, Observer {
+            it?.let {
+                adapter.addHeroList(it)
+            }
         })
-//        binding.setLifecycleOwner(this)
 
         quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
         binding.contentMain?.quoteViewModel = quoteViewModel

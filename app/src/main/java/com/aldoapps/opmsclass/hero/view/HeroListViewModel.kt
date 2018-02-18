@@ -8,13 +8,15 @@ import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
 import com.aldoapps.opmsclass.hero.interactor.GetHeroList
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
 import com.aldoapps.opmsclass.hero.repository.HeroEntity
+import com.aldoapps.opmsclass.hero.util.HeroModelMapper
 
 /**
  * Created by aldo on 04/01/18.
  */
 class HeroListViewModel(application: Application) : AndroidViewModel(application), GetHeroListCallback<List<HeroEntity>> {
 
-    val heroListEntity: MutableLiveData<List<HeroEntity>> = MutableLiveData()
+    val heroListLiveData: MutableLiveData<List<HeroModel>> = MutableLiveData()
+
     var isLoading = ObservableBoolean()
 
     private fun getHero() = GetHeroList(HeroDatabase, this)
@@ -30,6 +32,6 @@ class HeroListViewModel(application: Application) : AndroidViewModel(application
 
     override fun onFinished(heroList: List<HeroEntity>) {
         isLoading.set(false)
-        heroListEntity.value = heroList
+        heroListLiveData.value = HeroModelMapper.transformHeroEntities(heroList)
     }
 }
