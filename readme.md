@@ -10,6 +10,22 @@ This app has three feature:
 - Show a random hero quote
 - Refresh a hero quote when FAB is clicked
 
+Image and assets is taken from OPM Wikia
+
+Why do we have Data Binding?
+
+I believe it was created so we don't write glue code (assigning data to view). Ok great, now we're ready to write an Android app using MVVM pattern right?
+
+This is getting tricky when Google introduce Android Architecture Components, with LiveData and ViewModel.
+
+So can we bind a LiveData to data binding? No.
+
+Well this is really confusing.
+
+Turns out data binding only communicate with "Observable Field"
+
+LiveData is an Observable, it will emit something.
+
 I managed to combine JUnit 5, Robolectric, PowerMock, AssertJ, and Kotlin with some caveat.
 
 If I'm using a `PowerMockRunner` on a test, I can't use JUnit 5 Parameterized test. The compiler throw `org.powermock.api.mockito.ClassNotPreparedException` Exception and will tell you that you haven't prepare the Class under test. So the following test wouldn't work.

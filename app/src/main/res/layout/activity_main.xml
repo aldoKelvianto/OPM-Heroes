@@ -6,7 +6,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.aldoapps.opmsclass.MainActivity">
+        tools:context="com.aldoapps.opmsclass.HeroActivity">
 
         <include
             android:id="@+id/content_main"
@@ -19,7 +19,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             android:scaleType="center"
-            android:onClick="fetchHeroData"
+            android:onClick="refreshQuote"
             app:srcCompat="@drawable/ic_punch_icon" />
 
     </android.support.design.widget.CoordinatorLayout>

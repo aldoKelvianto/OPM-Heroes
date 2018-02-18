@@ -14,4 +14,8 @@ class GetRandomQuote(private val quoteDb: QuoteDatabase, private val callback: G
     override fun doInBackground(vararg params: Void?): QuoteEntity {
         return quoteDb.getRandomQuote()
     }
+
+    override fun onPostExecute(result: QuoteEntity) {
+        callback.onFinished(result)
+    }
 }

@@ -9,13 +9,14 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
+import com.aldoapps.opmsclass.hero.util.HeroModelMapper
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
-import com.aldoapps.opmsclass.hero.view.HeroModelMapper
 import com.aldoapps.opmsclass.quote.QuoteViewModel
+import com.aldoapps.opmsclass.quote.util.QuoteModelMapper
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity() {
+class HeroActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -46,9 +47,6 @@ class MainActivity : AppCompatActivity() {
         heroListViewModel = ViewModelProviders.of(this).get(HeroListViewModel::class.java)
         binding.contentMain?.heroListViewModel = heroListViewModel
 
-        quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
-        binding.contentMain?.quoteViewModel = quoteViewModel
-
         val heroListEntity = heroListViewModel.heroListEntity
         Transformations.map(heroListEntity, {
             HeroModelMapper.transformHeroEntity(it)
@@ -57,10 +55,22 @@ class MainActivity : AppCompatActivity() {
             heroListViewModel.isLoading.set(false)
             adapter.addHeroList(it)
         })
+
+        quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
+        binding.contentMain?.quoteViewModel = quoteViewModel
+
+        val quoteEntityLiveData = quoteViewModel.quoteEntityLiveData
+        Transformations.map(quoteEntityLiveData, {
+            QuoteModelMapper.transformQuoteEntity(it)
+        }).observe(this, Observer {
+            it ?: return@Observer
+            quoteViewModel.author.set(it.author)
+            quoteViewModel.quote.set(it.quote)
+        })
     }
 
     fun refreshQuote(view: View?) {
-
+        quoteViewModel.getRandomQuote()
     }
 
     fun fetchHeroData() {
