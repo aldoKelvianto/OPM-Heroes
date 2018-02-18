@@ -10,8 +10,8 @@
             type="com.aldoapps.opmsclass.quote.QuoteViewModel" />
 
         <variable
-            name="heroViewModel"
-            type="com.aldoapps.opmsclass.hero.view.HeroViewModel" />
+            name="heroListViewModel"
+            type="com.aldoapps.opmsclass.hero.view.HeroListViewModel" />
 
     </data>
 
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
-                app:isVisible="@{heroViewModel.isLoading}"
+                app:isVisible="@{heroListViewModel.isLoading}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

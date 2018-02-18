@@ -2,6 +2,7 @@ package com.aldoapps.opmsclass.quote.repository
 
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
 import com.aldoapps.opmsclass.hero.repository.HeroEntity
+import java.util.*
 
 /**
  * Created by aldo on 05/01/18.
@@ -67,6 +68,10 @@ object QuoteDatabase {
     }
 
     fun getQuotes(): List<QuoteEntity> = QUOTE_ENTITY_LIST
+
+    fun getRandomQuote(): QuoteEntity {
+        return QUOTE_ENTITY_LIST[Random().nextInt(QUOTE_ENTITY_LIST.size - 1)]
+    }
 
     fun getQuotesByAuthor(author: String): List<QuoteEntity> =
             QUOTE_ENTITY_LIST.filter {

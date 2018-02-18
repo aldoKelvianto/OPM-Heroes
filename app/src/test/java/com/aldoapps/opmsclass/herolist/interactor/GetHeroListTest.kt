@@ -1,7 +1,7 @@
 package com.aldoapps.opmsclass.herolist.interactor
 
-import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
 import com.aldoapps.opmsclass.hero.interactor.GetHeroList
+import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
 import com.aldoapps.opmsclass.hero.repository.HeroEntity
 import org.assertj.core.api.Assertions.assertThat
@@ -50,9 +50,6 @@ class GetHeroListTest {
         // Given
         // When
         GetHeroList(heroDatabase, mockGetHeroListCallback).execute()
-
-//        val timeOutDuration = 3_500L
-//        Thread.sleep(timeOutDuration)
 
         // Then
         Mockito.verify(mockGetHeroListCallback).onFinished(anyList())

@@ -12,7 +12,7 @@ import com.aldoapps.opmsclass.hero.repository.HeroEntity
 /**
  * Created by aldo on 04/01/18.
  */
-class HeroViewModel(application: Application) : AndroidViewModel(application), GetHeroListCallback<List<HeroEntity>> {
+class HeroListViewModel(application: Application) : AndroidViewModel(application), GetHeroListCallback<List<HeroEntity>> {
 
     val heroListEntity: MutableLiveData<List<HeroEntity>> = MutableLiveData()
     var isLoading = ObservableBoolean()

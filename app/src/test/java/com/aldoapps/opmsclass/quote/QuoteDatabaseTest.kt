@@ -2,6 +2,7 @@ package com.aldoapps.opmsclass.com.aldoapps.opmsclass.quote
 
 import com.aldoapps.opmsclass.quote.repository.QuoteDatabase
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
@@ -9,15 +10,44 @@ import org.junit.jupiter.params.provider.CsvSource
 /**
  * Created by aldo on 05/01/18.
  */
-class QuoteEntityDatabaseTest {
+class QuoteDatabaseTest {
 
     @Test
-    fun getAllQuoteTest() {
+    fun shouldHave33Quotes_whenGetQuotesFromQuoteDatabase() {
         // Given
         // When
         val quotes = QuoteDatabase.getQuotes()
         // Then
         assertThat(quotes.size).isEqualTo(33)
+    }
+
+    @Test
+    fun shouldReturnValidQuote_whenGetQuoteFromDatabase() {
+        // Given
+        // When
+        val quotes = QuoteDatabase.getQuotes()
+        val randomQuote = QuoteDatabase.getRandomQuote()
+
+        // Then
+        assertThat(randomQuote).isNotNull()
+        assertThat(randomQuote.hero).isNotNull()
+        assertThat(randomQuote.quote).isNotEmpty()
+        assertThat(quotes).contains(randomQuote)
+    }
+
+    @Test
+    fun shouldThrowException_whenIndexIsOutOfBound() {
+        // Given
+        val size = QuoteDatabase.getQuotes().size
+
+        // When
+        val throwable = catchThrowable {
+            QuoteDatabase.getQuotes()[size]
+        }
+
+        // Then
+        assertThat(throwable).isNotNull()
+                .isInstanceOf(ArrayIndexOutOfBoundsException::class.java)
     }
 
     @Test
