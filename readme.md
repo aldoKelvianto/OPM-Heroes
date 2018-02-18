@@ -1,3 +1,5 @@
+Bind once, observe everywhere.
+
 OPM S-Class is an App that aim to demonstrate the following:
 
 - MVVM with Data Binding and Android Architecture Component (Live Data)

@@ -36,14 +36,20 @@ object HeroDatabase {
         return HERO_ENTITY_LIST.get(name)
     }
 
-    private fun getDuration() = Random().nextInt(3_500).toLong()
+    private fun getDuration() = Random().nextInt(3_000).toLong()
 
     fun getDefaultHero() = HeroEntity("Saitama", "Caped Baldy", R.mipmap.ic_launcher_round, 0, "One Punch Man")
 
-    fun getHeroList(): List<HeroEntity> = HERO_ENTITY_LIST
-            .map {
-                it.value
-            }
-            .toList()
+    // Long operation
+    fun getHeroList(): List<HeroEntity> {
+        // Emulate network call
+        SystemClock.sleep(getDuration())
+
+        return HERO_ENTITY_LIST
+                .map {
+                    it.value
+                }
+                .toList()
+    }
 
 }

@@ -1,20 +1,15 @@
 package com.aldoapps.opmsclass
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.aldoapps.opmsclass.R.id.rv_hero
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
-import com.aldoapps.opmsclass.hero.util.HeroModelMapper
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
 import com.aldoapps.opmsclass.quote.QuoteViewModel
-import com.aldoapps.opmsclass.quote.util.QuoteModelMapper
 import kotlinx.android.synthetic.main.content_main.*
 
 class HeroActivity : AppCompatActivity() {
@@ -29,13 +24,21 @@ class HeroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.setLifecycleOwner(this)
 
-        initRecyclerView()
         initViewModel()
+        initBinding()
+        initRecyclerView()
         refreshQuote(null)
         fetchHeroData()
+    }
+
+    private fun initBinding() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.let {
+            binding.contentMain?.heroListViewModel = heroListViewModel
+            binding.contentMain?.quoteViewModel = quoteViewModel
+            binding.setLifecycleOwner(this)
+        }
     }
 
     private fun initRecyclerView() {
@@ -47,32 +50,7 @@ class HeroActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         heroListViewModel = ViewModelProviders.of(this).get(HeroListViewModel::class.java)
-        binding.contentMain?.heroListViewModel = heroListViewModel
-
-        heroListViewModel.heroListLiveData.observe(this, Observer {
-            it?.let {
-                adapter.addHeroList(it)
-            }
-        })
-
         quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
-        quoteViewModel.quoteEntityLiveData.observe(this, Observer {
-            binding.contentMain?.quoteModel = it
-        })
-
-//
-//        quoteViewModel.quoteEntityLiveData.observe(this, Observer {
-//          it?.let {
-//             binding.contentMain?.
-//          }
-//        })
-//        Transformations.map(quoteEntityLiveData, {
-//            QuoteModelMapper.transformQuoteEntity(it)
-//        }).observe(this, Observer {
-//            it ?: return@Observer
-//            quoteViewModel.author.set(it.author)
-//            quoteViewModel.quote.set(it.quote)
-//        })
     }
 
     fun refreshQuote(view: View?) {

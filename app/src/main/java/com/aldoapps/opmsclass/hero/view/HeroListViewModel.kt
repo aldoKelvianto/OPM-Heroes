@@ -17,21 +17,21 @@ class HeroListViewModel(application: Application) : AndroidViewModel(application
 
     val heroListLiveData: MutableLiveData<List<HeroModel>> = MutableLiveData()
 
-    var isLoading = ObservableBoolean()
+    var isLoading = MutableLiveData<Boolean>()
 
     private fun getHero() = GetHeroList(HeroDatabase, this)
 
     init {
-        isLoading.set(true)
+        isLoading.value = true
     }
 
     fun queryHeroList() {
-        isLoading.set(true)
+        isLoading.value = true
         getHero().execute()
     }
 
     override fun onFinished(heroList: List<HeroEntity>) {
-        isLoading.set(false)
+        isLoading.value = false
         heroListLiveData.value = HeroModelMapper.transformHeroEntities(heroList)
     }
 }

@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="quoteModel"
-            type="com.aldoapps.opmsclass.quote.view.QuoteModel" />
+            name="quoteViewModel"
+            type="com.aldoapps.opmsclass.quote.QuoteViewModel" />
 
         <variable
             name="heroListViewModel"
@@ -32,14 +32,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{quoteModel.quote}"
-                tools:text="I'm just a guys who do hero for fun" />
+                tools:text="I'm just a guys who do hero for fun"
+                android:text="@{quoteViewModel.quoteModelLiveData.quote}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{quoteModel.author}"
-                tools:text="Saitama" />
+                tools:text="Saitama"
+                android:text="@{quoteViewModel.quoteModelLiveData.author}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -62,7 +64,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_hero"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:bindHeroList="@{heroListViewModel.heroListLiveData}"/>
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
