@@ -55,6 +55,7 @@ class HeroActivity : AppCompatActivity() {
             heroListViewModel.isLoading.set(false)
             adapter.addHeroList(it)
         })
+//        binding.setLifecycleOwner(this)
 
         quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
         binding.contentMain?.quoteViewModel = quoteViewModel

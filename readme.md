@@ -12,6 +12,12 @@ This app has three feature:
 
 Image and assets is taken from OPM Wikia
 
+View (Android Activity) is only interested in a LiveData inside a ViewModel.
+
+But View (Android Layout) is only interested in an Observable.
+
+Now we have two Class who is an Observable.
+
 Why do we have Data Binding?
 
 I believe it was created so we don't write glue code (assigning data to view). Ok great, now we're ready to write an Android app using MVVM pattern right?

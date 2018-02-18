@@ -3,6 +3,7 @@ package com.aldoapps.opmsclass.quote
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Observer
 import android.databinding.ObservableField
 import com.aldoapps.opmsclass.quote.interactor.GetRandomQuote
 import com.aldoapps.opmsclass.quote.interactor.GetRandomQuoteCallback
@@ -18,6 +19,12 @@ class QuoteViewModel(application: Application) : AndroidViewModel(application), 
 
     val author = ObservableField<String>()
     val quote = ObservableField<String>()
+
+    init {
+        quoteEntityLiveData.observe(this, Observer {
+
+        })
+    }
 
     private fun getQuote() = GetRandomQuote(QuoteDatabase, this)
 
