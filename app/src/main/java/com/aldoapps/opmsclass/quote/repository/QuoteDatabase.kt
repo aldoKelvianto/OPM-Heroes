@@ -33,15 +33,13 @@ object QuoteDatabase {
                 QuoteEntity(saitama, "OK"),
                 QuoteEntity(saitama, "Overwhelming strength is boring"),
                 QuoteEntity(saitama, "If the heroes run and hide, who will stay and fight?"),
-                QuoteEntity(saitama, "I'm not a heroListLiveData because I want your approval. I do it because I want to!"),
+                QuoteEntity(saitama, "I'm not a hero because I want your approval. I do it because I want to!"),
                 QuoteEntity(saitama, "I'm just a guy who's a heroListLiveData for fun"),
                 QuoteEntity(saitama, "I'll leave tomorrow's problems to tomorrow's me"),
                 QuoteEntity(saitama, "Human beings are strong because we have the ability to change ourselves."),
                 QuoteEntity(saitama, "If you really want to be strong... Stop caring about what your surrounding thinks of you!"),
-                QuoteEntity(saitama, """Do you honestly think that you won't get any stronger for the rest of your life?
-                    Instead of sitting around frustrated, it's better to keep on moving forward.
-                """),
-                QuoteEntity(saitama, """"Heroes and the police don't do their jobs because someone says "please". Right?"""),
+                QuoteEntity(saitama, """Do you honestly think that you won't get any stronger for the rest of your life? Instead of sitting around frustrated, it's better to keep on moving forward."""),
+                QuoteEntity(saitama, """Heroes and the police don't do their jobs because someone says "please". Right?"""),
                 QuoteEntity(kamikaze, "I only accept the strong."),
                 QuoteEntity(kamikaze, "I'm not middle-aged. I'm 37"),
                 QuoteEntity(bang, "You do not need to know who the victor is within a battle using martial arts. That is the beauty of this art"),

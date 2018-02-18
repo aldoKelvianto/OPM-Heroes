@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.aldoapps.opmsclass.R.id.rv_hero
 import com.aldoapps.opmsclass.databinding.ActivityMainBinding
 import com.aldoapps.opmsclass.hero.util.HeroModelMapper
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
@@ -55,16 +56,23 @@ class HeroActivity : AppCompatActivity() {
         })
 
         quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
-        binding.contentMain?.quoteViewModel = quoteViewModel
-
-        val quoteEntityLiveData = quoteViewModel.quoteEntityLiveData
-        Transformations.map(quoteEntityLiveData, {
-            QuoteModelMapper.transformQuoteEntity(it)
-        }).observe(this, Observer {
-            it ?: return@Observer
-            quoteViewModel.author.set(it.author)
-            quoteViewModel.quote.set(it.quote)
+        quoteViewModel.quoteEntityLiveData.observe(this, Observer {
+            binding.contentMain?.quoteModel = it
         })
+
+//
+//        quoteViewModel.quoteEntityLiveData.observe(this, Observer {
+//          it?.let {
+//             binding.contentMain?.
+//          }
+//        })
+//        Transformations.map(quoteEntityLiveData, {
+//            QuoteModelMapper.transformQuoteEntity(it)
+//        }).observe(this, Observer {
+//            it ?: return@Observer
+//            quoteViewModel.author.set(it.author)
+//            quoteViewModel.quote.set(it.quote)
+//        })
     }
 
     fun refreshQuote(view: View?) {
