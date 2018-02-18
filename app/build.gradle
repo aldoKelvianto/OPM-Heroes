@@ -83,9 +83,6 @@ dependencies {
     // Please refer to the "Android Studio Workarounds" section for more insight on this.
     testCompileOnly junit5.unitTestsRuntime()
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:1.1.0"
     kapt "android.arch.lifecycle:compiler:1.1.0"
