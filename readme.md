@@ -1,3 +1,15 @@
+OPM S-Class is an App that aim to demonstrate the following:
+
+- MVVM with Data Binding and Android Architecture Component (Live Data)
+- Full Kotlin usage for writing app and its test cases.
+- Combining JUnit 5 with PowerMock, Mockito, AssertJ and Robolectric
+
+This app has three feature:
+
+- Show a list of heroes
+- Show a random hero quote
+- Refresh a hero quote when FAB is clicked
+
 I managed to combine JUnit 5, Robolectric, PowerMock, AssertJ, and Kotlin with some caveat.
 
 If I'm using a `PowerMockRunner` on a test, I can't use JUnit 5 Parameterized test. The compiler throw `org.powermock.api.mockito.ClassNotPreparedException` Exception and will tell you that you haven't prepare the Class under test. So the following test wouldn't work.
