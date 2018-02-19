@@ -10,7 +10,6 @@ import com.aldoapps.opmsclass.databinding.ActivityMainBinding
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
 import com.aldoapps.opmsclass.quote.QuoteViewModel
-import kotlinx.android.synthetic.main.content_main.*
 
 class HeroActivity : AppCompatActivity() {
 
@@ -29,11 +28,11 @@ class HeroActivity : AppCompatActivity() {
         initBinding()
         initRecyclerView()
         refreshQuote(null)
-        fetchHeroData()
+        getHeroList()
     }
 
     private fun initBinding() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_hero)
         binding.let {
             binding.contentMain?.heroListViewModel = heroListViewModel
             binding.contentMain?.quoteViewModel = quoteViewModel
@@ -42,10 +41,10 @@ class HeroActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        rv_hero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_hero.setHasFixedSize(true)
+        binding.contentMain?.rvHero?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.contentMain?.rvHero?.setHasFixedSize(true)
         adapter = HeroAdapter()
-        rv_hero.adapter = adapter
+        binding.contentMain?.rvHero?.adapter = adapter
     }
 
     private fun initViewModel() {
@@ -57,7 +56,7 @@ class HeroActivity : AppCompatActivity() {
         quoteViewModel.getRandomQuote()
     }
 
-    fun fetchHeroData() {
-        heroListViewModel.queryHeroList()
+    private fun getHeroList() {
+        heroListViewModel.getHeroList()
     }
 }

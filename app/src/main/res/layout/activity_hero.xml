@@ -10,7 +10,7 @@
 
         <include
             android:id="@+id/content_main"
-            layout="@layout/content_main" />
+            layout="@layout/content_hero" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

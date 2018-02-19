@@ -3,7 +3,6 @@ package com.aldoapps.opmsclass.hero.view
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
-import android.databinding.ObservableBoolean
 import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
 import com.aldoapps.opmsclass.hero.interactor.GetHeroList
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
@@ -19,15 +18,15 @@ class HeroListViewModel(application: Application) : AndroidViewModel(application
 
     var isLoading = MutableLiveData<Boolean>()
 
-    private fun getHero() = GetHeroList(HeroDatabase, this)
+    private fun getHeroListUseCase() = GetHeroList(HeroDatabase, this)
 
     init {
         isLoading.value = true
     }
 
-    fun queryHeroList() {
+    fun getHeroList() {
         isLoading.value = true
-        getHero().execute()
+        getHeroListUseCase().execute()
     }
 
     override fun onFinished(heroList: List<HeroEntity>) {

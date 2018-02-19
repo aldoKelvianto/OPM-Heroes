@@ -17,14 +17,13 @@ class QuoteViewModel(application: Application) : AndroidViewModel(application), 
 
     val quoteModelLiveData: MutableLiveData<QuoteModel> = MutableLiveData()
 
-    private fun getQuote() = GetRandomQuote(QuoteDatabase, this)
+    private fun getRandomQuoteUseCase() = GetRandomQuote(QuoteDatabase, this)
 
     fun getRandomQuote() {
-        getQuote().execute()
+        getRandomQuoteUseCase().execute()
     }
 
     override fun onFinished(quote: QuoteEntity) {
         quoteModelLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
     }
-
 }
