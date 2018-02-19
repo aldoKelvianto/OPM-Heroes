@@ -3,6 +3,7 @@ package com.aldoapps.opmsclass.quote.interactor
 import com.aldoapps.opmsclass.quote.repository.QuoteDatabase
 import com.aldoapps.opmsclass.quote.repository.QuoteEntity
 import com.aldoapps.opmsclass.util.any
+import com.aldoapps.opmsclass.util.capture
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule
@@ -48,12 +49,16 @@ class GetRandomQuoteTest {
     @Test
     fun shouldTriggerCallback_whenGetRandomQuoteFromDb() {
         // Given
+        val captor: ArgumentCaptor<QuoteEntity> = ArgumentCaptor.forClass(QuoteEntity::class.java)
+
         // When
         GetRandomQuote(quoteDatabase, mockGetRandomQuoteCallback).execute()
 
         // Then
-        Mockito.verify(mockGetRandomQuoteCallback).onFinished(any())
+        Mockito.verify(mockGetRandomQuoteCallback).onFinished(capture(captor))
+        assertThat(captor.value).isNotNull()
+                .hasFieldOrProperty("hero")
+                .hasFieldOrProperty("quote")
         Mockito.verifyNoMoreInteractions(mockGetRandomQuoteCallback)
     }
-
 }
