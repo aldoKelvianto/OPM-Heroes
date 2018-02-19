@@ -49,7 +49,7 @@
                 android:paddingTop="@dimen/padding_very_small"
                 android:paddingRight="@dimen/padding_small"
                 tools:text="Saitama"
-                android:text="@{quoteViewModel.quoteModelLiveData.author}"
+                android:text="@{`- ` + quoteViewModel.quoteModelLiveData.author}"
                 />
 
             <TextView

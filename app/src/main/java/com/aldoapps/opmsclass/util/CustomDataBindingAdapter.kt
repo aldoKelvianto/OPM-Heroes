@@ -7,13 +7,14 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroModel
+import de.hdodenhof.circleimageview.CircleImageView
 
 /**
  * Created by aldo on 04/01/18.
  */
 
 @BindingAdapter("loadImage")
-fun loadImageWithResource(view: ImageView, resId: Int) {
+fun loadImageWithResource(view: CircleImageView, resId: Int) {
     view.setImageResource(resId)
 }
 

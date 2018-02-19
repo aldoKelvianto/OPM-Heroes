@@ -10,4 +10,5 @@ data class HeroEntity(val name: String, val alias: String, val photo: Int, val r
 fun HeroEntity.toHeroModel(): HeroModel =
         HeroModel(alias,
                 photo,
-                rank.toString())
+                rank.toString(),
+                description)

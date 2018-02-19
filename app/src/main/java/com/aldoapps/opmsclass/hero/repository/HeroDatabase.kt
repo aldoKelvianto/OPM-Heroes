@@ -2,6 +2,7 @@ package com.aldoapps.opmsclass.hero.repository
 
 import android.os.SystemClock
 import com.aldoapps.opmsclass.R
+import com.aldoapps.opmsclass.util.RandomUtil
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -13,7 +14,7 @@ object HeroDatabase {
     private var HERO_ENTITY_LIST: HashMap<String, HeroEntity> = HashMap()
 
     init {
-        HERO_ENTITY_LIST["Saitama"] = HeroEntity("Saitama", "Caped Baldy", R.mipmap.ic_launcher_round, 0, "One Punch Man")
+        HERO_ENTITY_LIST["Saitama"] = HeroEntity("Saitama", "Caped Baldy", R.drawable.ic_saitama, 0, "One Punch Man")
         HERO_ENTITY_LIST["Blast"] = HeroEntity("Blast", "Blast", R.drawable.ic_blast, 1, "Probably Saitama's Dad")
         HERO_ENTITY_LIST["Tatsumaki"] = HeroEntity("Tatsumaki", "Tornado of Terror", R.drawable.ic_tatsumaki, 2, "Tsundere Loli trope")
         HERO_ENTITY_LIST["Bang"] = HeroEntity("Bang", "Silver Fang", R.drawable.ic_bang, 3, "Netero with hair")
@@ -31,24 +32,21 @@ object HeroDatabase {
     // Long operation
     fun getHero(name: String): HeroEntity? {
         // Emulate network call
-        SystemClock.sleep(getDuration())
+        SystemClock.sleep(RandomUtil.getDuration())
         return HERO_ENTITY_LIST.get(name)
     }
 
-    private fun getDuration() = Random().nextInt(3_000).toLong()
-
     fun getDefaultHero() = HeroEntity("Saitama", "Caped Baldy", R.mipmap.ic_launcher_round, 0, "One Punch Man")
 
-    // Long operation
     fun getHeroList(): List<HeroEntity> {
-        // Emulate network call
-        SystemClock.sleep(getDuration())
-
         return HERO_ENTITY_LIST
                 .map {
                     it.value
                 }
                 .toList()
+                .sortedBy {
+                    it.rank
+                }
     }
 
 }

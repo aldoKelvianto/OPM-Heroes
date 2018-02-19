@@ -44,7 +44,6 @@ object QuoteDatabase {
                 QuoteEntity(kamikaze, "I'm not middle-aged. I'm 37"),
                 QuoteEntity(bang, "You do not need to know who the victor is within a battle using martial arts. That is the beauty of this art"),
                 QuoteEntity(bang, "You're too young to worry about failure"),
-                QuoteEntity(bang, "I've got cram school, so can I go?"),
                 QuoteEntity(sweetMask, "A hero must be tough, strong and beautiful... As well as able to promptly and splendidly eradicate evil."),
                 QuoteEntity(sweetMask, "I ain't that sweet."),
                 QuoteEntity(genos, "Incinerate!"),
