@@ -51,7 +51,7 @@ class QuoteDatabaseTest {
     }
 
     @Test
-    fun getQuotesByAuthorTest() {
+    fun shouldReturnValidQuote_whenGetQuotesByAuthor() {
         // Given
         // When
         val tatsumakiQuotes = QuoteDatabase.getQuotesByAuthor("Tatsumaki")
@@ -78,7 +78,7 @@ class QuoteDatabaseTest {
             "King, 2",
             "Saitama, 11"
     )
-    fun testQuoteSize(author: String, expected: Int) {
+    fun shouldReturnValidQuotesSize_whenGetQuotesByAuthor(author: String, expected: Int) {
         val quote = QuoteDatabase.getQuotesByAuthor(author)
         assertThat(quote).hasSize(expected)
     }

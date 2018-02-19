@@ -7,7 +7,7 @@
 
         <variable
             name="quoteViewModel"
-            type="com.aldoapps.opmsclass.quote.QuoteViewModel" />
+            type="com.aldoapps.opmsclass.quote.view.QuoteViewModel" />
 
         <variable
             name="heroListViewModel"

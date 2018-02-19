@@ -9,7 +9,7 @@ import android.view.View
 import com.aldoapps.opmsclass.databinding.ActivityHeroBinding
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
-import com.aldoapps.opmsclass.quote.QuoteViewModel
+import com.aldoapps.opmsclass.quote.view.QuoteViewModel
 
 class HeroActivity : AppCompatActivity() {
 

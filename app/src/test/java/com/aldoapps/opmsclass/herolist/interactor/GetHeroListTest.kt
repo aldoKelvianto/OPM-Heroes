@@ -36,7 +36,7 @@ class GetHeroListTest {
     }
 
     @Test
-    fun getHeroFromDb_shouldReturnList() {
+    fun shouldReturnList_whenGetHeroFromDb() {
         GetHeroList(heroDatabase, object : GetHeroListCallback<List<HeroEntity>> {
             override fun onFinished(heroList: List<HeroEntity>) {
                 assertThat(heroList).isInstanceOf(List::class.java)
@@ -46,7 +46,7 @@ class GetHeroListTest {
     }
 
     @Test
-    fun getHeroFromDb_shouldTriggerCallback() {
+    fun shouldTriggerCallback_whenGetHeroFromDb() {
         // Given
         // When
         GetHeroList(heroDatabase, mockGetHeroListCallback).execute()

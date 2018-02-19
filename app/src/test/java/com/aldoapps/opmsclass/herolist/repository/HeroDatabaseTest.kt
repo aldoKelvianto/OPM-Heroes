@@ -30,7 +30,7 @@ class HeroDatabaseTest {
     }
 
     @Test
-    fun getHeroList() {
+    fun shouldReturnHeroList_whenGetHeroListFromHeroDatabase() {
         // Given
         // When
         val heroList = HeroDatabase.getHeroList()
@@ -39,7 +39,7 @@ class HeroDatabaseTest {
     }
 
     @Test
-    fun getDefaultHero() {
+    fun shouldReturnDefaultHero_whenGetDefaultHeroFromHeroDatabase() {
         // Given
         // When
         val defaultHero = HeroDatabase.getDefaultHero()
@@ -54,7 +54,7 @@ class HeroDatabaseTest {
             "Tatsumaki, Tornado of Terror",
             "Saitama, Caped Baldy"
     )
-    fun getHeroAlias(name: String, alias: String) {
+    fun nameAndAliasShouldMatch_whenGetHeroAliasFromHeroDatabase(name: String, alias: String) {
         Mockito.mock(SystemClock::class.java)
 
         // When

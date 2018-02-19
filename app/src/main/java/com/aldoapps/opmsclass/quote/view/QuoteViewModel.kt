@@ -1,4 +1,4 @@
-package com.aldoapps.opmsclass.quote
+package com.aldoapps.opmsclass.quote.view
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
