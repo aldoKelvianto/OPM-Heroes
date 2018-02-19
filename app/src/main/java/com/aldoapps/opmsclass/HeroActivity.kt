@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.aldoapps.opmsclass.databinding.ActivityMainBinding
+import com.aldoapps.opmsclass.databinding.ActivityHeroBinding
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
 import com.aldoapps.opmsclass.quote.QuoteViewModel
 
 class HeroActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityHeroBinding
 
     private lateinit var heroListViewModel: HeroListViewModel
 
@@ -34,17 +34,17 @@ class HeroActivity : AppCompatActivity() {
     private fun initBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hero)
         binding.let {
-            binding.contentMain?.heroListViewModel = heroListViewModel
-            binding.contentMain?.quoteViewModel = quoteViewModel
+            binding.contentHero?.heroListViewModel = heroListViewModel
+            binding.contentHero?.quoteViewModel = quoteViewModel
             binding.setLifecycleOwner(this)
         }
     }
 
     private fun initRecyclerView() {
-        binding.contentMain?.rvHero?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.contentMain?.rvHero?.setHasFixedSize(true)
+        binding.contentHero?.rvHero?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.contentHero?.rvHero?.setHasFixedSize(true)
         adapter = HeroAdapter()
-        binding.contentMain?.rvHero?.adapter = adapter
+        binding.contentHero?.rvHero?.adapter = adapter
     }
 
     private fun initViewModel() {

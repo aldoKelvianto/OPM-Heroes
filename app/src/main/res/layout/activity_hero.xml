@@ -9,7 +9,7 @@
         tools:context="com.aldoapps.opmsclass.HeroActivity">
 
         <include
-            android:id="@+id/content_main"
+            android:id="@+id/content_hero"
             layout="@layout/content_hero" />
 
         <android.support.design.widget.FloatingActionButton
