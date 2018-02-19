@@ -25,5 +25,6 @@ class QuoteViewModel(application: Application) : AndroidViewModel(application), 
 
     override fun onFinished(quote: QuoteEntity) {
         quoteModelLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
+
     }
 }

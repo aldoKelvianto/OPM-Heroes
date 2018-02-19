@@ -1,12 +1,10 @@
-Bind once, observe everywhere.
-
-
-
-OPM S-Class is an App that aim to demonstrate the following:
+**OPM Heroes** is an App that aim to demonstrate the following:
 
 - MVVM with Data Binding and Android Architecture Component (Live Data)
 - Full Kotlin usage for writing app and its test cases.
 - Combining JUnit 5 with PowerMock, Mockito, AssertJ and Robolectric
+
+![screenshot-1](/Users/aldo/AndroidStudioProjects/PortfolioApps/OPMHeroes/raw/screenshot-1.png)
 
 This app has three feature:
 
@@ -14,100 +12,47 @@ This app has three feature:
 - Show a random hero quote
 - Refresh a hero quote when FAB is clicked
 
-Image and assets is taken from OPM Wikia
+**Heroes images is taken from [OPM Wikia](onepunchman.wikia.com)
 
-View (Android Activity) is only interested in a LiveData inside a ViewModel.
+---
 
-But View (Android Layout) is only interested in an Observable.
+### Bind once, observe everywhere.
 
-Now we have two Class who is an Observable.
+Or so I thought.
 
-Why do we have Data Binding?
+Turns out combining Data Binding and Architecture Components are not that easy. View (Android Activity) is only interested in a LiveData inside a ViewModel. But View (Android Layout) is only interested in an Observable. Now we have two Class who act as an Observable. How to combine best of two world?
 
-I believe it was created so we don't write glue code (assigning data to view). Ok great, now we're ready to write an Android app using MVVM pattern right?
-
-This is getting tricky when Google introduce Android Architecture Components, with LiveData and ViewModel.
-
-So can we bind a LiveData to data binding? No.
-
-Well this is really confusing.
-
-Turns out data binding only communicate with "Observable Field"
-
-LiveData is an Observable, it will emit something.
-
-I managed to combine JUnit 5, Robolectric, PowerMock, AssertJ, and Kotlin with some caveat.
-
-This problem is addressed in 
-
-```
-https://stackoverflow.com/questions/34773958/kotlin-and-argumentcaptor-illegalstateexception
-https://github.com/antoniolg/KataContactsKotlin/issues/1
-```
-
-
-
-If I'm using a `PowerMockRunner` on a test, I can't use JUnit 5 Parameterized test. The compiler throw `org.powermock.api.mockito.ClassNotPreparedException` Exception and will tell you that you haven't prepare the Class under test. So the following test wouldn't work.
+My first solution is a little bit dirty (but works). Activity will observe to LiveData, and then propagate the value to Observable on ViewModel. This isn't ideal because its defeat the Data Binding purpose, which is to eliminate glue code between a View and a Model. Updating Observable one by one is similar to updating each view manually.
 
 ```kotlin
-@RunWith(PowerMockRunner::class)
-@PrepareForTest(SystemClock::class)
-class HeroDatabaseTest {
-
-    @ParameterizedTest
-    @CsvSource(
-            "Tatsumaki, Tornado of Terror",
-            "Bang, Silver Fang",
-            "King, Strongest Man",
-            "Saitama, Caped Baldy"
-    )
-    fun getHeroAlias(heroName: String, alias: String) {
-        PowerMockito.mockStatic(SystemClock::class.java)
-        val hero = HeroDatabase.getHero(heroName)
-        assertThat(hero?.alias).isEqualTo(alias)
-    }
+class QuoteViewModel(application: Application) : AndroidViewModel(application) {
+    private val quoteEntityLiveData: LiveData<QuoteEntity> = MutableLiveData()
+    val author = ObservableField<String>()
+    val quote = ObservableField<String>()
 }
 ```
 
-But this test would work.
+
+The second and final solution only possible with latest update from [android gradle plugin (3.1.0-alpha6)](https://androidstudio.googleblog.com/2017/12/android-studio-31-canary-6-is-now.html). Now a Layout can bind data directly from a LiveData.
 
 ```kotlin
-@RunWith(PowerMockRunner::class)
-@PrepareForTest(SystemClock::class)
-class HeroDatabaseTest {
-
-    @Test
-    fun getHeroAlias() {
-        val heroName = "Tatsumaki"
-        val alias = "Tornado of Terror"
-        PowerMockito.mockStatic(SystemClock::class.java)
-
-        val hero = HeroDatabase.getHero(heroName)
-
-        assertThat(hero?.alias).isEqualTo(alias)
-    }
-}
-
-```
-
-And this test would work too.
-
-```kotlin
-class QuoteDatabaseTest {
-
-    @ParameterizedTest
-    @CsvSource(
-            "Tatsumaki, 1",
-            "King, 2",
-            "Saitama, 11"
-    )
-    fun testQuoteSize(author: String, expected: Int) {
-        val quote = QuoteDatabase.getQuotesByAuthor(author)
-        assertEquals(expected, quote.size)
-    }
+class QuoteViewModel(application: Application) : AndroidViewModel(application) {
+    val quoteModelLiveData: MutableLiveData<QuoteModel> = MutableLiveData()
+    // no more ObservableField!
 }
 ```
+You don't even need to get livedata `value` in xml.
 
-My guess is since PowerMock or Mockito is using JUnit 4, not 5. Its unable to process a `ParameterizedTest` annotation. Maybe it will be fixed in the future.
+```xml
+ <TextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="@{quoteViewModel.quoteModelLiveData.quote}" />
 
-Another thing I notice is some test doesn't increase Code Coverage. I'm still investigating this issue.
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@{`- ` + quoteViewModel.quoteModelLiveData.author}"  />
+```
+
+Thanks Android Team for making Data Binding great again!
