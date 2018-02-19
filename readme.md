@@ -4,7 +4,7 @@
 - Full Kotlin usage for writing app and its test cases.
 - Combining JUnit 5 with PowerMock, Mockito, AssertJ and Robolectric
 
-![screenshot-1](/Users/aldo/AndroidStudioProjects/PortfolioApps/OPMHeroes/raw/screenshot-1.png)
+![screenshot-1](raw/screenshot-1.png)
 
 This app has three feature:
 
