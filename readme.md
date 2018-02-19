@@ -1,5 +1,7 @@
 Bind once, observe everywhere.
 
+
+
 OPM S-Class is an App that aim to demonstrate the following:
 
 - MVVM with Data Binding and Android Architecture Component (Live Data)
@@ -35,6 +37,15 @@ Turns out data binding only communicate with "Observable Field"
 LiveData is an Observable, it will emit something.
 
 I managed to combine JUnit 5, Robolectric, PowerMock, AssertJ, and Kotlin with some caveat.
+
+This problem is addressed in 
+
+```
+https://stackoverflow.com/questions/34773958/kotlin-and-argumentcaptor-illegalstateexception
+https://github.com/antoniolg/KataContactsKotlin/issues/1
+```
+
+
 
 If I'm using a `PowerMockRunner` on a test, I can't use JUnit 5 Parameterized test. The compiler throw `org.powermock.api.mockito.ClassNotPreparedException` Exception and will tell you that you haven't prepare the Class under test. So the following test wouldn't work.
 

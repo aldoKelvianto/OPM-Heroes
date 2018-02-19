@@ -55,6 +55,9 @@ class GetRandomQuoteTest {
         GetRandomQuote(quoteDatabase, mockGetRandomQuoteCallback).execute()
 
         // Then
+        // captor.capture() will throw IllegalStateException
+        // java.lang.IllegalStateException: captor.capture() must not be null
+        // Mockito.verify(mockGetRandomQuoteCallback).onFinished(captor.capture())
         Mockito.verify(mockGetRandomQuoteCallback).onFinished(capture(captor))
         assertThat(captor.value).isNotNull()
                 .hasFieldOrProperty("hero")
