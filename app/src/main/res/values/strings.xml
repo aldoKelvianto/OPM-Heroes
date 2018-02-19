@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OPM S-Class</string>
+    <string name="app_name">OPM Heroes</string>
     <string name="action_settings">Settings</string>
     <string name="hero_list">Hero List</string>
 </resources>
