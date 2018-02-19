@@ -11,6 +11,7 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:padding="@dimen/padding_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{hero.alias}"
+            android:padding="@dimen/padding_very_small"
             app:layout_constraintLeft_toRightOf="@id/iv_photo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Tatsumaki" />
@@ -37,10 +39,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{hero.rank}"
+            android:paddingLeft="@dimen/padding_very_small"
             app:layout_constraintLeft_toRightOf="@id/iv_photo"
             app:layout_constraintTop_toBottomOf="@id/tv_name"
             tools:text="2" />
-
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -33,12 +33,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="I'm just a guys who do hero for fun"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingRight="@dimen/padding_small"
+                android:textStyle="italic"
                 android:text="@{quoteViewModel.quoteModelLiveData.quote}"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_very_small"
+                android:paddingRight="@dimen/padding_small"
                 tools:text="Saitama"
                 android:text="@{quoteViewModel.quoteModelLiveData.author}"
                 />
@@ -46,8 +55,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="HERO LIST"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:padding="@dimen/padding_small"
+                android:text="@string/hero_list"
+                android:textAllCaps="true"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <ProgressBar
