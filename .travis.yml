@@ -5,7 +5,20 @@ android:
     - platform-tools
     - build-tools-27.0.2
     - android-27
+    - add-on
+    - extra
+  before_install:
+      - yes | sdkmanager "platforms;android-27"
   licenses:
-    - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+  jdk:
+    - oraclejdk8
+  script:
+    - ./gradlew clean lint test build
+  before_cache:
+    - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  cache:
+    directories:
+      - $HOME/.m2
+      - $HOME/.gradle/caches/
+      - $HOME/.gradle/wrapper/
