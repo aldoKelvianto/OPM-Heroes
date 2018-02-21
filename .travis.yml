@@ -1,24 +1,34 @@
-language: android
-android:
-  components:
-    - tools
-    - platform-tools
-    - build-tools-27.0.2
-    - android-27
-    - add-on
-    - extra
-  before_install:
-      - yes | sdkmanager "platforms;android-27"
-  licenses:
-    - 'android-sdk-license-.+'
-  jdk:
-    - oraclejdk8
-  script:
-    - ./gradlew clean lint test build
-  before_cache:
-    - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-  cache:
-    directories:
-      - $HOME/.m2
-      - $HOME/.gradle/caches/
-      - $HOME/.gradle/wrapper/
+{
+  "language": "android",
+  "jdk": "oraclejdk8",
+  "sudo": false,
+  "android": {
+    "components": [
+      "tools",
+      "platform-tools",
+      "build-tools-26.0.2",
+      "android-27",
+      "extra-google-m2repository"
+    ]
+  },
+  "before_install": [
+    "yes | sdkmanager \"platforms;android-27\""
+  ],
+  "script": [
+    "./gradlew build"
+  ],
+  "before_cache": [
+    "rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock",
+    "rm -fr $HOME/.gradle/caches/*/plugin-resolution/"
+  ],
+  "cache": {
+    "directories": [
+      "$HOME/.gradle/caches/",
+      "$HOME/.gradle/wrapper/",
+      "$HOME/.android/build-cache"
+    ]
+  },
+  "group": "stable",
+  "dist": "trusty",
+  "os": "linux"
+}
