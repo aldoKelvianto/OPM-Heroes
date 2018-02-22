@@ -1,3 +1,5 @@
+![CI Build](https://api.travis-ci.org/aldoKelvianto/OPM-Heroes.png)
+
 **OPM Heroes** is an App that aim to demonstrate the following:
 
 - MVVM with Data Binding and Android Architecture Component (Live Data)
