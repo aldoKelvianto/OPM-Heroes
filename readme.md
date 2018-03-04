@@ -1,6 +1,6 @@
 ![CI Build](https://api.travis-ci.org/aldoKelvianto/OPM-Heroes.png)
 
-**OPM Heroes** is an App that aim to demonstrate the following:
+**[One Punch Man (OPM)](https://en.wikipedia.org/wiki/One-Punch_Man) Heroes** is an App that aim to demonstrate the following:
 
 - MVVM with Data Binding and Android Architecture Component (Live Data)
 - Full Kotlin usage for writing app and its test cases.
