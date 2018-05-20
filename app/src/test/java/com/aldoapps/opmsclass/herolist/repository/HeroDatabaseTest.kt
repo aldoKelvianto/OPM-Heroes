@@ -8,14 +8,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnit
-import org.mockito.junit.MockitoRule
-import org.powermock.api.mockito.PowerMockito
-import org.powermock.core.classloader.annotations.PrepareForTest
-import org.powermock.modules.junit4.PowerMockRunner
-import org.powermock.modules.junit4.rule.PowerMockRule
 
 /**
  * Created by aldo on 01/02/18.
