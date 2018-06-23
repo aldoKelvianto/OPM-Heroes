@@ -1,8 +1,8 @@
 package com.aldoapps.opmsclass.hero.view
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.aldoapps.opmsclass.hero.interactor.GetHeroList
 import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
@@ -12,25 +12,31 @@ import com.aldoapps.opmsclass.hero.util.HeroModelMapper
 /**
  * Created by aldo on 04/01/18.
  */
-class HeroListViewModel(application: Application) : AndroidViewModel(application), GetHeroListCallback<List<HeroEntity>> {
+class HeroListViewModel : ViewModel(), GetHeroListCallback<List<HeroEntity>> {
 
-    val heroListLiveData: MutableLiveData<List<HeroModel>> = MutableLiveData()
+    val heroList: LiveData<List<HeroModel>>
+        get() = _heroListLiveData
 
-    var isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
+    private val _heroListLiveData: MutableLiveData<List<HeroModel>> = MutableLiveData()
+
+    private val _isLoading = MutableLiveData<Boolean>()
 
     private fun getHeroListUseCase() = GetHeroList(HeroDatabase, this)
 
     init {
-        isLoading.value = true
+        _isLoading.value = true
     }
 
     fun getHeroList() {
-        isLoading.value = true
+        _isLoading.value = true
         getHeroListUseCase().execute()
     }
 
     override fun onFinished(heroList: List<HeroEntity>) {
-        isLoading.value = false
-        heroListLiveData.value = HeroModelMapper.transformHeroEntities(heroList)
+        _isLoading.value = false
+        _heroListLiveData.value = HeroModelMapper.transformHeroEntities(heroList)
     }
 }

@@ -38,7 +38,7 @@
                 android:paddingTop="@dimen/padding_small"
                 android:paddingRight="@dimen/padding_small"
                 android:textStyle="italic"
-                android:text="@{quoteViewModel.quoteModelLiveData.quote}"
+                android:text="@{quoteViewModel.quote.quote}"
                 />
 
             <TextView
@@ -49,7 +49,7 @@
                 android:paddingTop="@dimen/padding_very_small"
                 android:paddingRight="@dimen/padding_small"
                 tools:text="Saitama"
-                android:text="@{`- ` + quoteViewModel.quoteModelLiveData.author}"
+                android:text="@{`- ` + quoteViewModel.quote.author}"
                 />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:id="@+id/rv_hero"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:bindHeroList="@{heroListViewModel.heroListLiveData}"/>
+                app:bindHeroList="@{heroListViewModel.heroList}"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

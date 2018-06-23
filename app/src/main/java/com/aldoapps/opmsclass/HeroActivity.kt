@@ -35,7 +35,8 @@ class HeroActivity : AppCompatActivity() {
         binding.let {
             binding.contentHero.heroListViewModel = heroListViewModel
             binding.contentHero.quoteViewModel = quoteViewModel
-//            binding.setLifecycleOwner(lifecycle)
+            binding.setLifecycleOwner(this)
+//            binding.setLifecycleOwner(this)
         }
     }
 
