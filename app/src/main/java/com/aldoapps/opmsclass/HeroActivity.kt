@@ -33,18 +33,17 @@ class HeroActivity : AppCompatActivity() {
     private fun initBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hero)
         binding.let {
-            binding.contentHero.heroListViewModel = heroListViewModel
-            binding.contentHero.quoteViewModel = quoteViewModel
-            binding.setLifecycleOwner(this)
+            binding.contentHero?.heroListViewModel = heroListViewModel
+            binding.contentHero?.quoteViewModel = quoteViewModel
 //            binding.setLifecycleOwner(this)
         }
     }
 
     private fun initRecyclerView() {
-        binding.contentHero.rvHero?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.contentHero.rvHero?.setHasFixedSize(true)
+        binding.contentHero?.rvHero?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.contentHero?.rvHero?.setHasFixedSize(true)
         adapter = HeroAdapter()
-        binding.contentHero.rvHero?.adapter = adapter
+        binding.contentHero?.rvHero?.adapter = adapter
     }
 
     private fun initViewModel() {
