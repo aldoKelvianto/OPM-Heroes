@@ -1,10 +1,9 @@
 package com.aldoapps.opmsclass.util
 
 import android.databinding.BindingAdapter
-import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.recyclerview.widget.RecyclerView
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroModel
 import de.hdodenhof.circleimageview.CircleImageView

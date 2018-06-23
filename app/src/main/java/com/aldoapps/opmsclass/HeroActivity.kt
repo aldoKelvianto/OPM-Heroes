@@ -1,11 +1,11 @@
 package com.aldoapps.opmsclass
 
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.aldoapps.opmsclass.databinding.ActivityHeroBinding
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
@@ -32,6 +32,8 @@ class HeroActivity : AppCompatActivity() {
     }
 
     private fun initBinding() {
+//        val contentView = DataBindingUtil.setContentView<ActivityHeroBinding>(this, R.layout.activity_hero)
+//        contentView.contentHero?.rv
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hero)
         binding.let {
             binding.contentHero?.heroListViewModel = heroListViewModel

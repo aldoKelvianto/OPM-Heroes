@@ -1,10 +1,10 @@
 package com.aldoapps.opmsclass.hero.view
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.MutableLiveData
-import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.aldoapps.opmsclass.hero.interactor.GetHeroList
+import com.aldoapps.opmsclass.hero.interactor.GetHeroListCallback
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
 import com.aldoapps.opmsclass.hero.repository.HeroEntity
 import com.aldoapps.opmsclass.hero.util.HeroModelMapper
