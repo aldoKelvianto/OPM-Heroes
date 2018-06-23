@@ -1,6 +1,7 @@
 package com.aldoapps.opmsclass
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
@@ -26,30 +27,32 @@ class HeroActivity : AppCompatActivity() {
         initViewModel()
         initBinding()
         initRecyclerView()
-        refreshQuote()
+        quoteViewModel.getRandomQuote()
         getHeroList()
     }
 
     private fun initBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hero)
         binding.setLifecycleOwner(this)
-        binding.heroListViewModel = heroListViewModel
-        binding.quoteViewModel = quoteViewModel
+        binding.contentHero.heroListViewModel = heroListViewModel
+        binding.contentHero.quoteViewModel = quoteViewModel
     }
 
     private fun initRecyclerView() {
-        binding.rvHero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvHero.setHasFixedSize(true)
+        binding.contentHero.rvHero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.contentHero.rvHero.setHasFixedSize(true)
         adapter = HeroAdapter()
-        binding.rvHero.adapter = adapter
+        binding.contentHero.rvHero.adapter = adapter
     }
 
     private fun initViewModel() {
-        heroListViewModel = ViewModelProviders.of(this).get(HeroListViewModel::class.java)
-        quoteViewModel = ViewModelProviders.of(this).get(QuoteViewModel::class.java)
+        heroListViewModel = ViewModelProviders.of(this)
+                .get(HeroListViewModel::class.java)
+        quoteViewModel = ViewModelProviders.of(this)
+                .get(QuoteViewModel::class.java)
     }
 
-    fun refreshQuote() {
+    fun refreshQuote(v: View) {
         quoteViewModel.getRandomQuote()
     }
 
