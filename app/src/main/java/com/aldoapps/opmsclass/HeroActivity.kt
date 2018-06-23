@@ -1,8 +1,8 @@
 package com.aldoapps.opmsclass
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aldoapps.opmsclass.databinding.ActivityHeroBinding
@@ -32,18 +32,16 @@ class HeroActivity : AppCompatActivity() {
 
     private fun initBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hero)
-        binding.let {
-            binding.contentHero?.heroListViewModel = heroListViewModel
-            binding.contentHero?.quoteViewModel = quoteViewModel
-//            binding.setLifecycleOwner(this)
-        }
+        binding.setLifecycleOwner(this)
+        binding.heroListViewModel = heroListViewModel
+        binding.quoteViewModel = quoteViewModel
     }
 
     private fun initRecyclerView() {
-        binding.contentHero?.rvHero?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.contentHero?.rvHero?.setHasFixedSize(true)
+        binding.rvHero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvHero.setHasFixedSize(true)
         adapter = HeroAdapter()
-        binding.contentHero?.rvHero?.adapter = adapter
+        binding.rvHero.adapter = adapter
     }
 
     private fun initViewModel() {

@@ -1,8 +1,8 @@
 package com.aldoapps.opmsclass.util
 
-import android.databinding.BindingAdapter
 import android.view.View
 import android.widget.ProgressBar
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroModel

@@ -28,5 +28,4 @@ class QuoteViewModel : ViewModel(), GetRandomQuoteCallback<QuoteEntity> {
     override fun onFinished(quote: QuoteEntity) {
         _quoteModelLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
     }
-
 }
