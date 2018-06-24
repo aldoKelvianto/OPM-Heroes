@@ -6,8 +6,10 @@ import com.aldoapps.opmsclass.hero.repository.HeroEntity
 
 /**
  * Created by aldo on 04/02/18.
+ * TODO: Use it when JetPack Navigation is stable
  */
-class GetHero(private val heroDb: HeroDatabase, private val callback: GetHeroCallback<HeroEntity>) : AsyncTask<String, Void, HeroEntity>() {
+class GetHero(private val heroDb: HeroDatabase, private val callback: GetHeroCallback<HeroEntity>)
+    : AsyncTask<String, Void, HeroEntity>() {
 
     override fun doInBackground(vararg params: String?): HeroEntity {
         val heroName = params[0]
@@ -19,8 +21,7 @@ class GetHero(private val heroDb: HeroDatabase, private val callback: GetHeroCal
     }
 
     private fun getHeroFromDb(heroName: String?): HeroEntity =
-        heroName?.let {
-            heroDb.getHero(it) ?:
-            heroDb.getDefaultHero()
-        } ?: heroDb.getDefaultHero()
+            heroName?.let {
+                heroDb.getHero(it) ?: heroDb.getDefaultHero()
+            } ?: heroDb.getDefaultHero()
 }

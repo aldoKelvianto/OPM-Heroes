@@ -12,7 +12,7 @@ import com.aldoapps.opmsclass.util.RandomUtil
 class GetHeroList(private val heroDb: HeroDatabase, private val getHeroListCallback: GetHeroListCallback<List<HeroEntity>>) : AsyncTask<Void, Void, List<HeroEntity>>() {
     override fun doInBackground(vararg params: Void?): List<HeroEntity> {
         // Emulate Network Call
-        SystemClock.sleep(RandomUtil.getDuration())
+        SystemClock.sleep(RandomUtil.getRandomDuration())
         return heroDb.getHeroList()
     }
 

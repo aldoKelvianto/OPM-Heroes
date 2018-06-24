@@ -39,7 +39,8 @@ class HeroActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        binding.contentHero.rvHero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.contentHero.rvHero.layoutManager = LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false)
         binding.contentHero.rvHero.setHasFixedSize(true)
         adapter = HeroAdapter()
         binding.contentHero.rvHero.adapter = adapter

@@ -15,11 +15,13 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
 /**
  * Created by aldo on 02/02/18.
  */
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [25])
 class GetRandomQuoteTest {
 
     private lateinit var quoteDatabase: QuoteDatabase

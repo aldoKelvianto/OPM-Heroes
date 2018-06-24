@@ -30,7 +30,7 @@ object HeroDatabase {
     // Long operation
     fun getHero(name: String): HeroEntity? {
         // Emulate network call
-        SystemClock.sleep(RandomUtil.getDuration())
+        SystemClock.sleep(RandomUtil.getRandomDuration())
         return HERO_ENTITY_LIST.get(name)
     }
 

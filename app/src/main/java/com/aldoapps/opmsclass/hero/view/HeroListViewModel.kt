@@ -14,29 +14,26 @@ import com.aldoapps.opmsclass.hero.util.HeroModelMapper
  */
 class HeroListViewModel : ViewModel(), GetHeroListCallback<List<HeroEntity>> {
 
-    val heroList: LiveData<List<HeroModel>>
-        get() = _heroListLiveData
+    val heroListLiveData: MutableLiveData<List<HeroModel>> = MutableLiveData()
 
-    val isLoading: LiveData<Boolean>
-        get() = _isLoading
-
-    private val _heroListLiveData: MutableLiveData<List<HeroModel>> = MutableLiveData()
-
-    private val _isLoading = MutableLiveData<Boolean>()
+    // Encapsulation sample, this is unnecessary
+    private val _isLoadingLiveData = MutableLiveData<Boolean>()
+    val isLoadingLiveData: LiveData<Boolean>
+        get() = _isLoadingLiveData
 
     private fun getHeroListUseCase() = GetHeroList(HeroDatabase, this)
 
     init {
-        _isLoading.value = true
+        _isLoadingLiveData.value = true
     }
 
     fun getHeroList() {
-        _isLoading.value = true
+        _isLoadingLiveData.value = true
         getHeroListUseCase().execute()
     }
 
     override fun onFinished(heroList: List<HeroEntity>) {
-        _isLoading.value = false
-        _heroListLiveData.value = HeroModelMapper.transformHeroEntities(heroList)
+        _isLoadingLiveData.value = false
+        heroListLiveData.value = HeroModelMapper.transformHeroEntities(heroList)
     }
 }
