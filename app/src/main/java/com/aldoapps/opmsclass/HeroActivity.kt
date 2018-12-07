@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.aldoapps.opmsclass.databinding.ActivityHeroBinding
 import com.aldoapps.opmsclass.hero.view.HeroAdapter
 import com.aldoapps.opmsclass.hero.view.HeroListViewModel
@@ -51,9 +50,9 @@ class HeroActivity : AppCompatActivity() {
                 .get(QuoteViewModel::class.java)
     }
 
-    fun refreshQuote(v: View) {
-        quoteViewModel.getRandomQuote()
-    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun refreshQuote(ignored: View) = quoteViewModel.getRandomQuote()
 
     private fun getHeroList() {
         heroListViewModel.getHeroList()
