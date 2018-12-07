@@ -4,28 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-  <androidx.coordinatorlayout.widget.CoordinatorLayout
+  <data>
+
+    <variable
+        name="quoteViewModel"
+        type="com.aldoapps.opmsclass.quote.view.QuoteViewModel"
+        />
+
+    <variable
+        name="heroListViewModel"
+        type="com.aldoapps.opmsclass.hero.view.HeroListViewModel"
+        />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       tools:context="com.aldoapps.opmsclass.HeroActivity"
       >
 
-    <include
-        layout="@layout/content_hero"
-        android:id="@+id/content_hero"
+    <TextView
+        android:id="@+id/textViewQuote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_small"
+        android:paddingRight="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_small"
+        android:text="@{quoteViewModel.quoteLiveData.quote}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="I'm just a guys who do hero for fun"
+        />
+
+    <TextView
+        android:id="@+id/textViewQuoteAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_small"
+        android:paddingRight="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_very_small"
+        android:text="@{`- ` + quoteViewModel.quoteLiveData.author}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewQuote"
+        tools:text="Saitama"
+        />
+
+    <TextView
+        android:id="@+id/textViewHeroListLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_small"
+        android:padding="@dimen/padding_small"
+        android:text="@string/hero_list"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewQuoteAuthor"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:isVisible="@{heroListViewModel.isLoadingLiveData}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewHeroListLabel"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:bindHeroList="@{heroListViewModel.heroListLiveData}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewHeroListLabel"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:onClick="refreshQuote"
         android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_punch_icon"
         />
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-
