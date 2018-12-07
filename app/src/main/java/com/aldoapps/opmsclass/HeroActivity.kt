@@ -38,9 +38,9 @@ class HeroActivity : AppCompatActivity() {
   }
 
   private fun initRecyclerView() {
-    binding.contentHero.rvHero.setHasFixedSize(true)
+    binding.contentHero.recyclerViewHero.setHasFixedSize(true)
     adapter = HeroAdapter()
-    binding.contentHero.rvHero.adapter = adapter
+    binding.contentHero.recyclerViewHero.adapter = adapter
   }
 
   private fun initViewModel() {
