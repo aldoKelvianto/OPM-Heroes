@@ -8,7 +8,7 @@ import com.aldoapps.opmsclass.databinding.ItemHeroBinding
  */
 class HeroViewHolder(private val binding: ItemHeroBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun setHero(hero: HeroModel) {
-        binding.hero = hero
-    }
+  fun setHero(hero: HeroModel) {
+    binding.hero = hero
+  }
 }

@@ -2,7 +2,7 @@ package com.aldoapps.opmsclass.quote.repository
 
 import com.aldoapps.opmsclass.hero.repository.HeroDatabase
 import com.aldoapps.opmsclass.hero.repository.HeroEntity
-import java.util.*
+import java.util.Random
 
 /**
  * Created by aldo on 05/01/18.

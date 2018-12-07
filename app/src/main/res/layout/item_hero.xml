@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?><!-- TODO: Remove this hack -->
 <layout>
 
-    <data>
+  <data>
 
-        <variable
-            name="hero"
-            type="com.aldoapps.opmsclass.hero.view.HeroModel" />
-    </data>
+    <variable
+        name="hero"
+        type="com.aldoapps.opmsclass.hero.view.HeroModel"
+        />
+  </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/padding_small"
+      >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loadImage="@{hero.photo}"
+        tools:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_small">
+        android:padding="@dimen/padding_very_small"
+        android:text="@{hero.alias}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintLeft_toRightOf="@id/iv_photo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tatsumaki"
+        />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_photo"
-            android:layout_width="@dimen/image_size"
-            android:layout_height="@dimen/image_size"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:loadImage="@{hero.photo}"
-            tools:src="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_very_small"
+        android:text="@{hero.description}"
+        app:layout_constraintLeft_toRightOf="@id/iv_photo"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="2"
+        />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_very_small"
-            android:text="@{hero.alias}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintLeft_toRightOf="@id/iv_photo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Tatsumaki" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/padding_very_small"
-            android:text="@{hero.description}"
-            app:layout_constraintLeft_toRightOf="@id/iv_photo"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
-            tools:text="2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

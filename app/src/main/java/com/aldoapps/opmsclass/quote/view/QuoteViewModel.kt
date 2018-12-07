@@ -13,15 +13,15 @@ import com.aldoapps.opmsclass.quote.util.QuoteModelMapper
  */
 class QuoteViewModel : ViewModel(), GetRandomQuoteCallback<QuoteEntity> {
 
-    val quoteLiveData: MutableLiveData<QuoteModel> = MutableLiveData()
+  val quoteLiveData: MutableLiveData<QuoteModel> = MutableLiveData()
 
-    private fun getRandomQuoteUseCase() = GetRandomQuote(QuoteDatabase, this)
+  private fun getRandomQuoteUseCase() = GetRandomQuote(QuoteDatabase, this)
 
-    fun getRandomQuote() {
-        getRandomQuoteUseCase().execute()
-    }
+  fun getRandomQuote() {
+    getRandomQuoteUseCase().execute()
+  }
 
-    override fun onFinished(quote: QuoteEntity) {
-        quoteLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
-    }
+  override fun onFinished(quote: QuoteEntity) {
+    quoteLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
+  }
 }

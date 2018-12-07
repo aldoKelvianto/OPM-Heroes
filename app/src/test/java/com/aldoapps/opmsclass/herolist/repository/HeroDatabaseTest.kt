@@ -16,46 +16,49 @@ import org.mockito.junit.MockitoJUnit
  */
 class HeroDatabaseTest {
 
-    @get:Rule
-    val mockitoRule = MockitoJUnit.rule()
+  @get:Rule
+  val mockitoRule = MockitoJUnit.rule()
 
-    @Before
-    fun setup() {
-    }
+  @Before
+  fun setup() {
+  }
 
-    @Test
-    fun shouldReturnHeroList_whenGetHeroListFromHeroDatabase() {
-        // Given
-        // When
-        val heroList = HeroDatabase.getHeroList()
-        // Then
-        assertThat(heroList).hasSize(13)
-    }
+  @Test
+  fun shouldReturnHeroList_whenGetHeroListFromHeroDatabase() {
+    // Given
+    // When
+    val heroList = HeroDatabase.getHeroList()
+    // Then
+    assertThat(heroList).hasSize(13)
+  }
 
-    @Test
-    fun shouldReturnDefaultHero_whenGetDefaultHeroFromHeroDatabase() {
-        // Given
-        // When
-        val defaultHero = HeroDatabase.getDefaultHero()
+  @Test
+  fun shouldReturnDefaultHero_whenGetDefaultHeroFromHeroDatabase() {
+    // Given
+    // When
+    val defaultHero = HeroDatabase.getDefaultHero()
 
-        assertThat(defaultHero.name).isEqualToIgnoringCase("saitama")
-        assertThat(defaultHero.alias).isEqualToIgnoringCase("caped baldy")
-        assertThat(defaultHero.rank).isEqualTo(0)
-    }
+    assertThat(defaultHero.name).isEqualToIgnoringCase("saitama")
+    assertThat(defaultHero.alias).isEqualToIgnoringCase("caped baldy")
+    assertThat(defaultHero.rank).isEqualTo(0)
+  }
 
-    @ParameterizedTest
-    @CsvSource(
-            "Tatsumaki, Tornado of Terror",
-            "Saitama, Caped Baldy"
-    )
-    fun nameAndAliasShouldMatch_whenGetHeroAliasFromHeroDatabase(name: String, alias: String) {
-        Mockito.mock(SystemClock::class.java)
+  @ParameterizedTest
+  @CsvSource(
+      "Tatsumaki, Tornado of Terror",
+      "Saitama, Caped Baldy"
+  )
+  fun nameAndAliasShouldMatch_whenGetHeroAliasFromHeroDatabase(
+    name: String,
+    alias: String
+  ) {
+    Mockito.mock(SystemClock::class.java)
 
-        // When
-        val hero = HeroDatabase.getHero(name)
+    // When
+    val hero = HeroDatabase.getHero(name)
 
-        // Then
-        assertThat(hero?.alias).isEqualTo(alias)
-    }
+    // Then
+    assertThat(hero?.alias).isEqualTo(alias)
+  }
 
 }

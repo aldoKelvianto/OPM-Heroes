@@ -5,5 +5,5 @@ package com.aldoapps.opmsclass.quote.interactor
  */
 interface GetRandomQuoteCallback<in T> {
 
-    fun onFinished(quote: T)
+  fun onFinished(quote: T)
 }
