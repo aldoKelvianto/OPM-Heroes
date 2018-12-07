@@ -1,30 +1,27 @@
 package com.aldoapps.opmsclass.quote.view
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.aldoapps.opmsclass.quote.interactor.GetRandomQuote
 import com.aldoapps.opmsclass.quote.interactor.GetRandomQuoteCallback
 import com.aldoapps.opmsclass.quote.repository.QuoteDatabase
 import com.aldoapps.opmsclass.quote.repository.QuoteEntity
 import com.aldoapps.opmsclass.quote.util.QuoteModelMapper
-import com.aldoapps.opmsclass.quote.view.QuoteModel
 
 /**
  * Created by aldo on 04/01/18.
  */
-class QuoteViewModel(application: Application) : AndroidViewModel(application), GetRandomQuoteCallback<QuoteEntity> {
+class QuoteViewModel : ViewModel(), GetRandomQuoteCallback<QuoteEntity> {
 
-    val quoteModelLiveData: MutableLiveData<QuoteModel> = MutableLiveData()
+  val quoteLiveData: MutableLiveData<QuoteModel> = MutableLiveData()
 
-    private fun getRandomQuoteUseCase() = GetRandomQuote(QuoteDatabase, this)
+  private fun getRandomQuoteUseCase() = GetRandomQuote(QuoteDatabase, this)
 
-    fun getRandomQuote() {
-        getRandomQuoteUseCase().execute()
-    }
+  fun getRandomQuote() {
+    getRandomQuoteUseCase().execute()
+  }
 
-    override fun onFinished(quote: QuoteEntity) {
-        quoteModelLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
-
-    }
+  override fun onFinished(quote: QuoteEntity) {
+    quoteLiveData.value = QuoteModelMapper.transformQuoteEntity(quote)
+  }
 }

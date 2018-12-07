@@ -9,8 +9,8 @@ import com.aldoapps.opmsclass.hero.view.HeroModel
  */
 object HeroModelMapper {
 
-    fun transformHeroEntities(list: List<HeroEntity>): List<HeroModel> =
-            list.flatMap {
-                listOf(it.toHeroModel())
-            }
+  fun transformHeroEntities(list: List<HeroEntity>): List<HeroModel> =
+    list.flatMap {
+      listOf(it.toHeroModel())
+    }
 }

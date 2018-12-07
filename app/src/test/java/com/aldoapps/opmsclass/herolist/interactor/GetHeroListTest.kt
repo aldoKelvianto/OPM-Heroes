@@ -22,38 +22,39 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 class GetHeroListTest {
 
-    private lateinit var heroDatabase: HeroDatabase
+  private lateinit var heroDatabase: HeroDatabase
 
-    @get:Rule
-    val mockitoRule: MockitoRule = MockitoJUnit.rule()
+  @get:Rule
+  val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
-    @Mock
-    private lateinit var mockGetHeroListCallback: GetHeroListCallback<List<HeroEntity>>
+  @Mock
+  private lateinit var mockGetHeroListCallback: GetHeroListCallback<List<HeroEntity>>
 
-    @Before
-    fun setup() {
-        heroDatabase = HeroDatabase
-    }
+  @Before
+  fun setup() {
+    heroDatabase = HeroDatabase
+  }
 
-    @Test
-    fun shouldReturnList_whenGetHeroFromDb() {
-        GetHeroList(heroDatabase, object : GetHeroListCallback<List<HeroEntity>> {
-            override fun onFinished(heroList: List<HeroEntity>) {
-                assertThat(heroList).isInstanceOf(List::class.java)
-                assertThat(heroList).hasSize(13)
-            }
-        }).execute()
-    }
+  @Test
+  fun shouldReturnList_whenGetHeroFromDb() {
+    GetHeroList(heroDatabase, object : GetHeroListCallback<List<HeroEntity>> {
+      override fun onFinished(heroList: List<HeroEntity>) {
+        assertThat(heroList).isInstanceOf(List::class.java)
+        assertThat(heroList).hasSize(13)
+      }
+    }).execute()
+  }
 
-    @Test
-    fun shouldTriggerCallback_whenGetHeroFromDb() {
-        // Given
-        // When
-        GetHeroList(heroDatabase, mockGetHeroListCallback).execute()
+  @Test
+  fun shouldTriggerCallback_whenGetHeroFromDb() {
+    // Given
+    // When
+    GetHeroList(heroDatabase, mockGetHeroListCallback).execute()
 
-        // Then
-        Mockito.verify(mockGetHeroListCallback).onFinished(anyList())
-        Mockito.verifyNoMoreInteractions(mockGetHeroListCallback)
-    }
+    // Then
+    Mockito.verify(mockGetHeroListCallback)
+        .onFinished(anyList())
+    Mockito.verifyNoMoreInteractions(mockGetHeroListCallback)
+  }
 
 }

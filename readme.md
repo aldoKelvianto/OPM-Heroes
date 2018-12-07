@@ -43,7 +43,9 @@ class QuoteViewModel(application: Application) : AndroidViewModel(application) {
     // no more ObservableField!
 }
 ```
-You don't even need to get livedata `value` in xml.
+
+You don't even need to get LiveData `value` in xml. Just access the the value on LiveData directly i.e `quote` and `author`.
+
 
 ```xml
  <TextView

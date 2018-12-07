@@ -8,5 +8,5 @@ import com.aldoapps.opmsclass.quote.view.QuoteModel
  */
 object QuoteModelMapper {
 
-    fun transformQuoteEntity(it: QuoteEntity): QuoteModel = QuoteModel(it.hero.name, it.quote)
+  fun transformQuoteEntity(it: QuoteEntity): QuoteModel = QuoteModel(it.hero.name, it.quote)
 }
