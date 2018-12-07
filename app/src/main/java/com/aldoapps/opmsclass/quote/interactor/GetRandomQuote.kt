@@ -9,7 +9,7 @@ import com.aldoapps.opmsclass.quote.repository.QuoteEntity
  */
 class GetRandomQuote(
   private val quoteDb: QuoteDatabase,
-  private val callback: GetRandomQuoteCallback<QuoteEntity>
+  private val callback: (QuoteEntity) -> Unit
 ) : AsyncTask<Void, Void, QuoteEntity>() {
 
   override fun doInBackground(vararg params: Void?): QuoteEntity {
@@ -17,6 +17,6 @@ class GetRandomQuote(
   }
 
   override fun onPostExecute(result: QuoteEntity) {
-    callback.onFinished(result)
+    callback(result)
   }
 }

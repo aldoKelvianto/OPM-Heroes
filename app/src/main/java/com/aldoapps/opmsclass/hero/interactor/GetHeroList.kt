@@ -11,7 +11,7 @@ import com.aldoapps.opmsclass.util.RandomUtil
  */
 class GetHeroList(
   private val heroDb: HeroDatabase,
-  private val getHeroListCallback: GetHeroListCallback<List<HeroEntity>>
+  private val getHeroListCallback: (List<HeroEntity>) -> Unit
 ) : AsyncTask<Void, Void, List<HeroEntity>>() {
   override fun doInBackground(vararg params: Void?): List<HeroEntity> {
     // Emulate Network Call
@@ -20,7 +20,7 @@ class GetHeroList(
   }
 
   override fun onPostExecute(hero: List<HeroEntity>) {
-    getHeroListCallback.onFinished(hero)
+    getHeroListCallback(hero)
   }
 
 }

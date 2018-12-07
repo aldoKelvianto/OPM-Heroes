@@ -78,7 +78,7 @@ dependencies {
     testImplementation "org.powermock:powermock-module-junit4:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-module-junit4-rule:$project.powerMockitoVersion"
     testImplementation "org.powermock:powermock-classloading-xstream:$project.powerMockitoVersion"
-    testImplementation "org.robolectric:robolectric:3.6.1"
+    testImplementation "org.robolectric:robolectric:3.8"
 
     // JUNIT 5
     testImplementation junit5.unitTests()
