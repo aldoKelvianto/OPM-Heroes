@@ -6,6 +6,8 @@ apply plugin: "de.mannodermaus.android-junit5"
 
 android {
     compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
     defaultConfig {
         applicationId "com.aldoapps.opmsclass"
         minSdkVersion 15

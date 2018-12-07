@@ -1,6 +1,5 @@
-package com.aldoapps.opmsclass.com.aldoapps.opmsclass.quote
+package com.aldoapps.opmsclass.quote.repository
 
-import com.aldoapps.opmsclass.quote.repository.QuoteDatabase
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test

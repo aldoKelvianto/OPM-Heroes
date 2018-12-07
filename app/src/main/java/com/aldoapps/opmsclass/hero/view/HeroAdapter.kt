@@ -34,5 +34,4 @@ class HeroAdapter : RecyclerView.Adapter<HeroViewHolder>() {
         heroList.add(hero)
         notifyItemInserted(heroList.size)
     }
-
 }
