@@ -32,25 +32,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="I'm just a guys who do hero for fun"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:paddingLeft="@dimen/padding_small"
                 android:paddingTop="@dimen/padding_small"
                 android:paddingRight="@dimen/padding_small"
-                android:textStyle="italic"
                 android:text="@{quoteViewModel.quoteLiveData.quote}"
-                />
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textStyle="italic"
+                tools:text="I'm just a guys who do hero for fun" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:paddingLeft="@dimen/padding_small"
                 android:paddingTop="@dimen/padding_very_small"
                 android:paddingRight="@dimen/padding_small"
-                tools:text="Saitama"
                 android:text="@{`- ` + quoteViewModel.quoteLiveData.author}"
-                />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="Saitama" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -76,7 +74,8 @@
                 android:id="@+id/rv_hero"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:bindHeroList="@{heroListViewModel.heroListLiveData}"/>
+                app:bindHeroList="@{heroListViewModel.heroListLiveData}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
