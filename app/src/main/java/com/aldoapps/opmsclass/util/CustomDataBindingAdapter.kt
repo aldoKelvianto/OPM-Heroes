@@ -33,7 +33,8 @@ fun bindData(
   view: RecyclerView,
   data: List<HeroModel>?
 ) {
+  val dataList = data ?: return
+
   val heroAdapter = view.adapter as HeroAdapter
-  data ?: return
-  heroAdapter.addHeroList(data)
+  heroAdapter.addHeroList(dataList)
 }
